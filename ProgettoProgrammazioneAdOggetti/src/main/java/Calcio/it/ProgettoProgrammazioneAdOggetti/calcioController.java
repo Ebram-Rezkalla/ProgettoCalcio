@@ -18,7 +18,7 @@ public class calcioController {
 	return new HelloWorldClass ("Ad","Mancini");
 	}
 	
-@PostMapping("/Ebram")
+@PostMapping("/Ebram1")
 	
 	public HelloWorldClass  exampleMethod2(@RequestBody HelloWorldClass body) {
 		return body;
