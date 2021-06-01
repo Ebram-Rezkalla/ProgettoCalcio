@@ -5,7 +5,7 @@ public class Stagione {
 	private String dataFine;
 	private String vincitore;
 	
-	private Stagione (String dataInizio, String dataFine, String vincitore) {
+	public Stagione (String dataInizio, String dataFine, String vincitore) {
 		this.dataInizio=dataInizio;
 		this.dataFine=dataFine;
 		this.vincitore=vincitore;

@@ -3,19 +3,28 @@ package model;
 import java.util.HashSet;
 
 public class Competizione {
-	
+	private String id;
 	private String nomePaese;
 	private String nome;
 	private HashSet<Squadra> squadraList= new HashSet<>();
 	private HashSet<Stagione> stagioneList= new HashSet<>();
 	
-	public Competizione (String nomePaese , String nome,HashSet<Stagione> stagioneList,HashSet<Squadra> squadraList) {
+	public Competizione (String nomePaese , String nome,String id,HashSet<Stagione> stagioneList,HashSet<Squadra> squadraList) {
 		this.nomePaese = nomePaese ;
 		this.nome = nome;
+		this.id=id;
 		this.squadraList=squadraList;
 		this.stagioneList=stagioneList;
 		
 		
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getNomepaese() {
