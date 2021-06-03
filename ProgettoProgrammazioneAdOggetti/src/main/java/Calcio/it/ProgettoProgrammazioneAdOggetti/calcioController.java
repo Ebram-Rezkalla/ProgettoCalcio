@@ -23,8 +23,8 @@ public class calcioController {
 	
 	
 	@GetMapping("/Hello") 
-	public ResponseEntity<Object> ParserCompetizioni() throws MalformedURLException, JSONException, IOException, ParseException {
-	return new ResponseEntity<>(parserdodo.ParserCompetizioni(),HttpStatus.OK);
+	public ResponseEntity<Object> ParserCompetizioni(@RequestParam(value="Link",defaultValue="")String Link) throws MalformedURLException, JSONException, IOException, ParseException {
+	return new ResponseEntity<>(parserdodo.ParserCompetizioni(Link),HttpStatus.OK);
 	}
 	
 }

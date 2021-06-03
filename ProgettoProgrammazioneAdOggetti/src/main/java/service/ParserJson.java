@@ -65,8 +65,11 @@ public ArrayList<Stagione> ParserStagioni () throws JSONException, MalformedURLE
 			return StagioneList;
 }
 
-public Competizione ParserCompetizioni () throws JSONException, MalformedURLException, IOException, ParseException {
-	writefile("https://api.football-data.org/v2/competitions/2019");
+public Competizione ParserCompetizioni (String link) throws JSONException, MalformedURLException, IOException, ParseException {
+	String s="https://api.football-data.org/v2/competitions/";
+	String f=s.concat(link);
+			
+	writefile(f);
 			JSONObject competizioneobj =new JSONObject (readfile());
 			JSONObject area=competizioneobj.getJSONObject("area");
 			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(),ParserSquadre());
