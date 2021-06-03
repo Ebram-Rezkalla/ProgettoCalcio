@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import service.ParserJson;
+import service.ServiceCalcio;
 
 @RestController
 
 
 public class calcioController {
 	
-	ParserJson parserdodo= new ParserJson();
+	ServiceCalcio servicecalcio=new ServiceCalcio();
 	
 	
 	@GetMapping("/Hello") 
-	public ResponseEntity<Object> ParserCompetizioni() throws MalformedURLException, JSONException, IOException, ParseException {
-	return new ResponseEntity<>(parserdodo.ParserCompetizioni(),HttpStatus.OK);
+	public ResponseEntity<Object> getall(@RequestParam(value="Link",defaultValue= "")String Link) throws MalformedURLException, JSONException, IOException, ParseException {
+	return new ResponseEntity<>(servicecalcio.getall(),HttpStatus.OK);
 	}
 	
 }
