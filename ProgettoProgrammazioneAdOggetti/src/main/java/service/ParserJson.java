@@ -1,14 +1,10 @@
 package service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
-import javax.net.ssl.HttpsURLConnection;
-
+import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,30 +13,23 @@ import model.Competizione;
 import model.Squadra;
 import model.Stagione;
 
-public class ParserJson {
+public class ParserJson extends APICall  {
 
 	Squadra s;
 	Stagione sg;
+	Competizione comp;
 
 public ParserJson() {
 	
 	
 }
 
-public String ChiamataAPI(String url) throws MalformedURLException, IOException {
-	
-	HttpsURLConnection openConnection= (HttpsURLConnection) new URL(url).openConnection();
-	openConnection.addRequestProperty("X-Auth-Token", "7c3732db0c284300b743a2f9d193e9e2");
-	BufferedReader in=new BufferedReader(new InputStreamReader(openConnection.getInputStream()));
-	String dodo= in.readLine();
-	if(!dodo.isEmpty());
-	return dodo;
-	}
 
-public ArrayList<Squadra> ParserSquadre () throws JSONException, MalformedURLException, IOException {
+public ArrayList<Squadra> ParserSquadre () throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Squadra> squadraList=new ArrayList<>();
-			JSONObject competizione =new JSONObject (ChiamataAPI("https://api.football-data.org/v2/competitions/2019/standings"));
+	writefile("https://api.football-data.org/v2/competitions/2019/standings");
+			JSONObject competizione =new JSONObject (readfile());
 			JSONArray standings = competizione.getJSONArray("standings");
 			JSONObject competizione2=standings.getJSONObject(0);
 			JSONArray Teams = competizione2.getJSONArray("table");
@@ -54,10 +43,12 @@ public ArrayList<Squadra> ParserSquadre () throws JSONException, MalformedURLExc
 			}
 
 
-public ArrayList<Stagione> ParserStagioni () throws JSONException, MalformedURLException, IOException {
+public ArrayList<Stagione> ParserStagioni () throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Stagione> StagioneList=new ArrayList<>();
-			JSONObject Stagioneobj =new JSONObject (ChiamataAPI("https://api.football-data.org/v2/competitions/2019"));
+	writefile("https://api.football-data.org/v2/competitions/2019");
+
+			JSONObject Stagioneobj =new JSONObject (readfile());
 			JSONArray Stagioni = Stagioneobj.getJSONArray("seasons");
 			for(int i=0;i<Stagioni.length();i++) {
 			JSONObject Stagione=Stagioni.getJSONObject(i);
@@ -74,15 +65,13 @@ public ArrayList<Stagione> ParserStagioni () throws JSONException, MalformedURLE
 			return StagioneList;
 }
 
-/*public Competizione ParserCompetizioni () throws JSONException, MalformedURLException, IOException {
-	
-			JSONObject competizioneobj =new JSONObject (ChiamataAPI("https://api.football-data.org/v2/competitions/2019"));
+public Competizione ParserCompetizioni () throws JSONException, MalformedURLException, IOException, ParseException {
+	writefile("https://api.football-data.org/v2/competitions/2019");
+			JSONObject competizioneobj =new JSONObject (readfile());
 			JSONObject area=competizioneobj.getJSONObject("area");
-			s=new Squadra((int)squadra1.get("position"),(String)dati.get("name"),(int)squadra1.get("won"),(int)squadra1.get("lost"),(int)squadra1.get("goalsFor"),(int)squadra1.get("goalsAgainst"),(int)squadra1.get("goalDifference"));
-			squadraList.add(s);
-			
-			return squadraList;
-			}*/
+			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(),ParserSquadre());
+			return comp;
+			}
 
 
 

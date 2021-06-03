@@ -3,6 +3,7 @@ package Calcio.it.ProgettoProgrammazioneAdOggetti;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,9 @@ public class calcioController {
 	
 	
 	@GetMapping("/Hello") 
-	public ResponseEntity<Object> ParserStagioni() throws JSONException, MalformedURLException, IOException{
-	return new ResponseEntity<>(parserdodo.ParserStagioni(),HttpStatus.OK);
-	}}
+	public ResponseEntity<Object> ParserCompetizioni() throws MalformedURLException, JSONException, IOException, ParseException {
+	return new ResponseEntity<>(parserdodo.ParserCompetizioni(),HttpStatus.OK);
+	}
+	
+}
 	

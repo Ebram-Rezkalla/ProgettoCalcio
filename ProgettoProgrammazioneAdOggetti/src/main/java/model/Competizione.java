@@ -1,15 +1,16 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Competizione {
-	private String id;
+	private int id;
 	private String nomePaese;
 	private String nome;
-	private HashSet<Squadra> squadraList= new HashSet<>();
-	private HashSet<Stagione> stagioneList= new HashSet<>();
+	private ArrayList<Squadra> squadraList= new ArrayList<>();
+	private ArrayList<Stagione> stagioneList= new ArrayList<>();
 	
-	public Competizione (String nomePaese , String nome,String id,HashSet<Stagione> stagioneList,HashSet<Squadra> squadraList) {
+	public Competizione (String nomePaese , String nome,int id,ArrayList<Stagione> stagioneList,ArrayList<Squadra> squadraList) {
 		this.nomePaese = nomePaese ;
 		this.nome = nome;
 		this.id=id;
@@ -19,11 +20,11 @@ public class Competizione {
 		
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -43,19 +44,19 @@ public class Competizione {
 		this.nome = nome;
 	}
 
-	public HashSet<Squadra> getSquadralist() {
+	public ArrayList<Squadra> getSquadralist() {
 		return squadraList;
 	}
 
-	public void setSquadralist(HashSet<Squadra> squadraList) {
+	public void setSquadralist(ArrayList<Squadra> squadraList) {
 		this.squadraList = squadraList;
 	}
 
-	public HashSet<Stagione> getStagionelist() {
+	public ArrayList<Stagione> getStagionelist() {
 		return stagioneList;
 	}
 
-	public void setStagionelist(HashSet<Stagione> stagioneList) {
+	public void setStagionelist(ArrayList<Stagione> stagioneList) {
 		this.stagioneList = stagioneList;
 	}
 	
