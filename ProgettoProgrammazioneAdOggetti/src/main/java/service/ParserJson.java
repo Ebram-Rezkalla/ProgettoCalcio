@@ -25,10 +25,15 @@ public ParserJson() {
 }
 
 
-public ArrayList<Squadra> ParserSquadre () throws JSONException, MalformedURLException, IOException, ParseException {
+public ArrayList<Squadra> ParserSquadre (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Squadra> squadraList=new ArrayList<>();
-	writefile("https://api.football-data.org/v2/competitions/2019/standings");
+	
+	String m =	"https://api.football-data.org/v2/competitions/" ;
+	 String f = m.concat(codice).concat("/standings");
+	 
+	writefile(f);
+
 			JSONObject competizione =new JSONObject (readfile());
 			JSONArray standings = competizione.getJSONArray("standings");
 			JSONObject competizione2=standings.getJSONObject(0);
@@ -43,11 +48,15 @@ public ArrayList<Squadra> ParserSquadre () throws JSONException, MalformedURLExc
 			}
 
 
-public ArrayList<Stagione> ParserStagioni () throws JSONException, MalformedURLException, IOException, ParseException {
+public ArrayList<Stagione> ParserStagioni (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Stagione> StagioneList=new ArrayList<>();
-	writefile("https://api.football-data.org/v2/competitions/2019");
-
+	
+	String s =	"https://api.football-data.org/v2/competitions/" ;
+	 String f = s.concat(codice);
+	 
+	writefile(f);
+	
 			JSONObject Stagioneobj =new JSONObject (readfile());
 			JSONArray Stagioni = Stagioneobj.getJSONArray("seasons");
 			for(int i=0;i<Stagioni.length();i++) {
@@ -65,14 +74,14 @@ public ArrayList<Stagione> ParserStagioni () throws JSONException, MalformedURLE
 			return StagioneList;
 }
 
-public Competizione ParserCompetizioni (String link) throws JSONException, MalformedURLException, IOException, ParseException {
-	String s="https://api.football-data.org/v2/competitions/";
-	String f=s.concat(link);
-			
+
+public Competizione ParserCompetizioni (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
+	 String s =	"https://api.football-data.org/v2/competitions/" ;
+	 String f = s.concat(codice);
 	writefile(f);
 			JSONObject competizioneobj =new JSONObject (readfile());
 			JSONObject area=competizioneobj.getJSONObject("area");
-			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(),ParserSquadre());
+			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(codice),ParserSquadre(codice));
 			return comp;
 			}
 
