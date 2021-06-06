@@ -14,10 +14,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Competizione;
 import model.Stagione;
+import stats.StatsGenerali;
 
 public class ServiceCalcio {
 	
 	ParserJson servicecomp=new ParserJson();
+	StatsGenerali statsgenerali=new StatsGenerali();
+	StatsGenerali honksh=new StatsGenerali();
 
 	ArrayList<String> out=new ArrayList<String>();
 	ArrayList<String> outone=new ArrayList<String>();
@@ -74,8 +77,32 @@ public class ServiceCalcio {
 			
 			
 		}
-	
 		
+		public int GetStats() throws MalformedURLException, JSONException, IOException, ParseException {
+			
+		int prova =statsgenerali.MassimoNumeroSquadre("2019", "2002", "2015");
+			
+			return prova;
+			
+			
+			
+			
+		}
+		
+		
+		
+	
+		public JSONObject GetFiltri(JSONObject filtro) throws MalformedURLException, JSONException, IOException, ParseException  {
+			
+			String id1=(String)filtro.get("id1");
+			String id2 =(String)filtro.get("id2");
+			int prova2=honksh.MassimoNumeroSquadre(id1,id2,"null");
+			JSONObject obj=new JSONObject();
+			obj.put("Ebram", prova2);
+					
+			return  obj;
+			
+		}
 		
 		
 	}
