@@ -19,9 +19,8 @@ public class StatsGenerali {
 	ArrayList<Squadra> italiaS = new ArrayList<Squadra>();
 	ArrayList<Squadra> germaniaS = new ArrayList<Squadra>();
 	ArrayList<Squadra> franciaS = new ArrayList<Squadra>();
-	ArrayList<Stagione> italiaSg = new ArrayList<Stagione>();
-	ArrayList<Stagione> germaniaSg = new ArrayList<Stagione>();
-	ArrayList<Stagione> franciaSg = new ArrayList<Stagione>();
+	ArrayList<Stagione> Sg = new ArrayList<Stagione>();
+	
 
 
 
@@ -82,16 +81,13 @@ public class StatsGenerali {
 		
 	}
 	
-	public int  MediaDurataGiorni(String tipo) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
+	
+	public int  MediaDurataGiorni(String tipo,String codice) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
 		
-		italiaSg=statistiche.ParserStagioni("2019");
-		germaniaSg=statistiche.ParserStagioni("2002");
-		franciaSg=statistiche.ParserStagioni("2015");
+		Sg=statistiche.ParserStagioni(codice);
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-		Date DataInizio=sdf.parse(italiaSg.get(0).getDataInizio());
-		Date DataFine=sdf.parse(italiaSg.get(0).getDataFine());
-		
-		
+		Date DataInizio=sdf.parse(Sg.get(0).getDataInizio());
+		Date DataFine=sdf.parse(Sg.get(0).getDataFine());
 		double differenzaTempo= (DataFine.getTime() - DataInizio.getTime());
 		double differenzaGironi=(differenzaTempo / (1000 * 60 * 60 * 24))% 365;
 		int differenzaMesi=(int) (differenzaGironi/30);
