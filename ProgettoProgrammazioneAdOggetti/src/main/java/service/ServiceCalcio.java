@@ -5,6 +5,8 @@ import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
@@ -14,21 +16,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Competizione;
 import model.Stagione;
+import model.StatsGeneraliModel;
+import stats.StatsGenerali;
 
 public class ServiceCalcio {
 	
 	ParserJson servicecomp=new ParserJson();
-
 	ArrayList<String> out=new ArrayList<String>();
 	ArrayList<String> outone=new ArrayList<String>();
+	StatsGenerali statsgenerali;
 
 
 	ArrayList<Stagione> staglist=new ArrayList<Stagione>();
 	int cont=1;
+	int cont1=1;
+	Timer timer = new Timer();
 
+	 StatsGeneraliModel statsgeneralimodel;
+	
 	public ServiceCalcio () {
-		
-		
+			
 		
 	}
 	
@@ -74,8 +81,45 @@ public class ServiceCalcio {
 			
 			
 		}
-	
 		
+		
+		
+		
+		public  StatsGeneraliModel GetStats() throws MalformedURLException, JSONException, IOException, ParseException, Exception {
+			if(cont1==1) {
+			
+				 statsgenerali=new StatsGenerali("2019", "2015", "2002", false);
+		
+			int massimo=statsgenerali.MassimoNumeroSquadre(false);
+			int minimo=statsgenerali.MinimoNumeroSquadre(false);
+			double media=statsgenerali.MedioNumeroSquadre(false);
+			int mediamesi=statsgenerali.MediaDurataSgMesi(false);
+			int mediagiorni=statsgenerali.MediaDurataSggiorni(false);
+			double mediasg=statsgenerali.MediaStagioniSalvate(false);
+			statsgeneralimodel= new StatsGeneraliModel(massimo,minimo,media,mediamesi,mediagiorni,mediasg);
+			cont1++;
+			} 
+
+				return statsgeneralimodel;
+			
+			
+
+			
+		}
+		
+		
+		
+	
+		/*public int GetFiltri() throws MalformedURLException, JSONException, IOException, ParseException  {
+			
+			//String id1=(String)filtro.get("id1");
+			//String id2 =(String)filtro.get("id2");
+			int prova2=honksh.MassimoNumeroSquadre(id1,id2,"null");
+			
+					
+			return  prova2;
+			
+		}*/
 		
 		
 	}

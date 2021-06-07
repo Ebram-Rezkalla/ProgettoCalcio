@@ -90,5 +90,4 @@ public Competizione ParserCompetizioni (String codice) throws JSONException, Mal
 
 
 
-
 }
