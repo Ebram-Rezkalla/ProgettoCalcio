@@ -1,70 +1,61 @@
 package model;
 
 public class StatsGeneraliModel {
-	 int Max;
-	 int Min;
-	 double Medio;
-	 int StagMesi;
-	 int StagGiorni;
-	 double StagSalvate;
+	 int Massimo_numero_squadre;
+	 int Minimo_numero_squadre;
+	 double Medio_numero_squadre;
+	 int Media_durata_stagione_mesi;
+	 int Media_durata_stagione_giorni;
+	 double Media_stagioni_salvate;
+	public StatsGeneraliModel(int massimo_numero_squadre, int minimo_numero_squadre, double medio_numero_squadre,
+			int media_durata_stagione_mesi, int media_durata_stagione_giorni, double media_stagioni_salvate) {
+		super();
+		Massimo_numero_squadre = massimo_numero_squadre;
+		Minimo_numero_squadre = minimo_numero_squadre;
+		Medio_numero_squadre = medio_numero_squadre;
+		Media_durata_stagione_mesi = media_durata_stagione_mesi;
+		Media_durata_stagione_giorni = media_durata_stagione_giorni;
+		Media_stagioni_salvate = media_stagioni_salvate;
+	}
+	public int getMassimo_numero_squadre() {
+		return Massimo_numero_squadre;
+	}
+	public void setMassimo_numero_squadre(int massimo_numero_squadre) {
+		Massimo_numero_squadre = massimo_numero_squadre;
+	}
+	public int getMinimo_numero_squadre() {
+		return Minimo_numero_squadre;
+	}
+	public void setMinimo_numero_squadre(int minimo_numero_squadre) {
+		Minimo_numero_squadre = minimo_numero_squadre;
+	}
+	public double getMedio_numero_squadre() {
+		return Medio_numero_squadre;
+	}
+	public void setMedio_numero_squadre(double medio_numero_squadre) {
+		Medio_numero_squadre = medio_numero_squadre;
+	}
+	public int getMedia_durata_stagione_mesi() {
+		return Media_durata_stagione_mesi;
+	}
+	public void setMedia_durata_stagione_mesi(int media_durata_stagione_mesi) {
+		Media_durata_stagione_mesi = media_durata_stagione_mesi;
+	}
+	public int getMedia_durata_stagione_giorni() {
+		return Media_durata_stagione_giorni;
+	}
+	public void setMedia_durata_stagione_giorni(int media_durata_stagione_giorni) {
+		Media_durata_stagione_giorni = media_durata_stagione_giorni;
+	}
+	public double getMedia_stagioni_salvate() {
+		return Media_stagioni_salvate;
+	}
+	public void setMedia_stagioni_salvate(double media_stagioni_salvate) {
+		Media_stagioni_salvate = media_stagioni_salvate;
+	}
+	 
 	
-	 public StatsGeneraliModel(int max, int min, double medio, int stagMesi, int stagGiorni, double stagSalvate) {
-		Max = max;
-		Min = min;
-		Medio = medio;
-		StagMesi = stagMesi;
-		StagGiorni = stagGiorni;
-		StagSalvate = stagSalvate;
-	}
-
-	public int getMax() {
-		return Max;
-	}
-
-	public void setMax(int max) {
-		Max = max;
-	}
-
-	public int getMin() {
-		return Min;
-	}
-
-	public void setMin(int min) {
-		Min = min;
-	}
-
-	public double getMedio() {
-		return Medio;
-	}
-
-	public void setMedio(double medio) {
-		Medio = medio;
-	}
-
-	public int getStagMesi() {
-		return StagMesi;
-	}
-
-	public void setStagMesi(int stagMesi) {
-		StagMesi = stagMesi;
-	}
-
-	public int getStagGiorni() {
-		return StagGiorni;
-	}
-
-	public void setStagGiorni(int stagGiorni) {
-		StagGiorni = stagGiorni;
-	}
-
-	public double getStagSalvate() {
-		return StagSalvate;
-	}
-
-	public void setStagSalvate(double stagSalvate) {
-		StagSalvate = stagSalvate;
-	}
-
-
-
+	
+	
 }
+

@@ -26,7 +26,6 @@ import stats.StatsGenerali;
 public class calcioController {
 	
 	ServiceCalcio servicecalcio=new ServiceCalcio();
-
 	
 	@GetMapping("/Competizioni") 
 
@@ -48,8 +47,8 @@ public class calcioController {
 	}
 	
 	@PostMapping("/Filter")
-	public ResponseEntity<Object> MediaStagioniFilter(@RequestBody FilterGenerali filter) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
-		return new ResponseEntity<>(filter.MediaStagioniFilter(),HttpStatus.OK);
+	public ResponseEntity<Object> GetFiltri(@RequestBody FilterGenerali filter) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
+		return new ResponseEntity<>(servicecalcio.GetFiltri(filter),HttpStatus.OK);
 	}
 	
 }

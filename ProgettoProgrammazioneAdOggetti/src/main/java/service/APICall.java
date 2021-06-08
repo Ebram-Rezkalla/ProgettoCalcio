@@ -27,18 +27,32 @@ public class APICall {
 		return input;
 		}
 
-	public void writefile(String url) throws MalformedURLException, IOException {
-		String write=ChiamataAPI(url);
-		PrintWriter printwriter= new PrintWriter(new BufferedWriter(new FileWriter("dati.json")));
-		printwriter.println(write);
+	public void writefileStagioni() throws MalformedURLException, IOException {
+		String write1=ChiamataAPI("https://api.football-data.org/v2/competitions/2019");
+		String write2=ChiamataAPI("https://api.football-data.org/v2/competitions/2015");
+		String write3=ChiamataAPI("https://api.football-data.org/v2/competitions/2002");
+		String writef = "["+write1+","+write2+","+write3+"]";
+		PrintWriter printwriter= new PrintWriter(new BufferedWriter(new FileWriter("datistagioni .json")));
+		printwriter.println(writef);
+		printwriter.close();
+		}
+	
+	public void writefileSquadre() throws MalformedURLException, IOException {
+		String write1=ChiamataAPI("https://api.football-data.org/v2/competitions/2019/standings");
+		String write2=ChiamataAPI("https://api.football-data.org/v2/competitions/2015/standings");
+		String write3=ChiamataAPI("https://api.football-data.org/v2/competitions/2002/standings");
+		String writef = "["+write1+","+write2+","+write3+"]";
+		PrintWriter printwriter= new PrintWriter(new BufferedWriter(new FileWriter("datisquadre.json")));
+		printwriter.println(writef);
 		printwriter.close();
 		}
 	
 	
-	public String readfile() throws ParseException, IOException {
-		BufferedReader read=new BufferedReader(new FileReader("dati.json"));
+	
+	public String readfile(String nomefile) throws ParseException, IOException {
+		BufferedReader read=new BufferedReader(new FileReader(nomefile));
 		String output=read.readLine();
-		
+		//read.close();
 		return output;
 		 
 		

@@ -32,15 +32,15 @@ public class StatsGenerali {
 	 double MediaGiorniStagione;
 
 
-	public StatsGenerali(String id1,String id2,String id3,boolean f) throws MalformedURLException, JSONException, IOException, Exception{
+	public StatsGenerali(String id1,String id2,String id3) throws MalformedURLException, JSONException, IOException, Exception{
 		S1=statistiche.ParserSquadre(id1);
 		S2=statistiche.ParserSquadre(id2);
-		S3=statistiche.ParserSquadre(id3);
 		Sta1=statistiche.ParserStagioni(id1);
 		Sta2=statistiche.ParserStagioni(id2);
+		if(!(id3.equals("null"))) {
 		Sta3=statistiche.ParserStagioni(id3);
-
-		f=f;
+		S3=statistiche.ParserSquadre(id3);
+		}
 
 		}
 	

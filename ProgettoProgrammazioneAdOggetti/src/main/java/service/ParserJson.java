@@ -28,13 +28,10 @@ public ParserJson() {
 public ArrayList<Squadra> ParserSquadre (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Squadra> squadraList=new ArrayList<>();
-	
-	String m =	"https://api.football-data.org/v2/competitions/" ;
-	 String f = m.concat(codice).concat("/standings");
-	 
-	writefile(f);
-
-			JSONObject competizione =new JSONObject (readfile());
+	int n= GetNumber (codice);
+			
+			JSONArray squadretot= new JSONArray(readfile("datisquadre.json"));
+			JSONObject competizione =squadretot.getJSONObject(n);
 			JSONArray standings = competizione.getJSONArray("standings");
 			JSONObject competizione2=standings.getJSONObject(0);
 			JSONArray Teams = competizione2.getJSONArray("table");
@@ -51,13 +48,10 @@ public ArrayList<Squadra> ParserSquadre (String codice) throws JSONException, Ma
 public ArrayList<Stagione> ParserStagioni (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Stagione> StagioneList=new ArrayList<>();
-	
-	String s =	"https://api.football-data.org/v2/competitions/" ;
-	 String f = s.concat(codice);
-	 
-	writefile(f);
-	
-			JSONObject Stagioneobj =new JSONObject (readfile());
+	int n= GetNumber (codice);
+			
+			JSONArray stagionitot= new JSONArray(readfile("datistagioni.json"));
+			JSONObject Stagioneobj = stagionitot.getJSONObject(n);
 			JSONArray Stagioni = Stagioneobj.getJSONArray("seasons");
 			for(int i=0;i<Stagioni.length();i++) {
 			JSONObject Stagione=Stagioni.getJSONObject(i);
@@ -76,17 +70,28 @@ public ArrayList<Stagione> ParserStagioni (String codice) throws JSONException, 
 
 
 public Competizione ParserCompetizioni (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
-	 String s =	"https://api.football-data.org/v2/competitions/" ;
-	 String f = s.concat(codice);
-	writefile(f);
-			JSONObject competizioneobj =new JSONObject (readfile());
+	int n= GetNumber (codice);
+		JSONArray stagionitot= new JSONArray(readfile("datistagioni.json"));
+			 
+			JSONObject competizioneobj =stagionitot.getJSONObject(n);
 			JSONObject area=competizioneobj.getJSONObject("area");
 			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(codice),ParserSquadre(codice));
 			return comp;
 			}
 
 
-
+ public int GetNumber (String codice) {
+	 
+	 if (codice.equals("2019"))
+		 return 0;
+	 
+	 if (codice.equals("2015"))
+		 return 1;
+	 
+	 if (codice.equals("2002"))
+		 return 2;
+	return (Integer) null;
+ }
 
 
 
