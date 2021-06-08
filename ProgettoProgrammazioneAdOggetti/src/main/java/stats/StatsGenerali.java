@@ -170,5 +170,7 @@ public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException
 		}
 	
 
+	
+
 
 }
