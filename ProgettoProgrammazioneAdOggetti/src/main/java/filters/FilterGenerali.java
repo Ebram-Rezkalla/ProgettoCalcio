@@ -12,19 +12,19 @@ import stats.StatsGenerali;
 public class FilterGenerali {
 	String id1;
 	String id2;
-	StatsGenerali statsgenerali=new StatsGenerali();
+	StatsGenerali statsgenerali;
 	
-	public FilterGenerali(String id1,String id2) {
+	public FilterGenerali(String id1,String id2) throws MalformedURLException, JSONException, IOException, Exception {
 		this.id1=id1;
 		this.id2=id2;
-		
+		this.statsgenerali=new StatsGenerali(id1,id2,"null");
 	}
 	
 	
 	
 public int MassimoSquadreFilter() throws MalformedURLException, JSONException, IOException, ParseException, org.apache.tomcat.util.json.ParseException  {
 			
-			int massimo=statsgenerali.MassimoNumeroSquadre(id1,id2,"null");
+			int massimo=statsgenerali.MassimoNumeroSquadre(true);
 			return  massimo;
 		}
 
@@ -32,26 +32,32 @@ public int MassimoSquadreFilter() throws MalformedURLException, JSONException, I
 
 public int MinimoSquadreFilter() throws MalformedURLException, JSONException, IOException, ParseException, org.apache.tomcat.util.json.ParseException  {
 	
-	int minimo=statsgenerali.MinimoNumeroSquadre(id1, id2, "null");
+	int minimo=statsgenerali.MinimoNumeroSquadre(true);
 	return  minimo;
 	}
 
 
 public double MedioSquadreFilter() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException {
 	
-	double media=statsgenerali.MedioNumeroSquadre(id1, id2, "null");
+	double media=statsgenerali.MedioNumeroSquadre(true);
 	return media;
 	}
-/*
-public int MediaDurataFilter() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException, java.text.ParseException {
+
+public int MediaDurataFilterMesi() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException, java.text.ParseException {
 	
-	int mediadurata=statsgenerali.MediaDurataSg("mese", id1, id2, "null");
+	int mediadurata=statsgenerali.MediaDurataSgMesi(true);
 	return mediadurata;
-	}*/
+	}
+
+public int MediaDurataFilterGiorni() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException, java.text.ParseException {
+	
+	int mediadurata=statsgenerali.MediaDurataSggiorni(true);
+	return mediadurata;
+	}
 
 public double MediaStagioniFilter() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException {
 	
-	double mediastagioni=statsgenerali.MediaStagioniSalvate(id1, id2, "null");
+	double mediastagioni=statsgenerali.MediaStagioniSalvate(true);
 	return mediastagioni;
 	
 	

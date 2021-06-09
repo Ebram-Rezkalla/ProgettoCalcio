@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import filters.FilterGenerali;
 import model.Competizione;
 import model.Stagione;
 import model.StatsGeneraliModel;
@@ -28,12 +29,9 @@ public class ServiceCalcio {
 
 
 	ArrayList<Stagione> staglist=new ArrayList<Stagione>();
-	int cont=1;
-	int cont1=1;
-	Timer timer = new Timer();
-
-	 StatsGeneraliModel statsgeneralimodel;
 	
+	 StatsGeneraliModel statsgeneralimodel;
+	 StatsGeneraliModel filtergeneralimodel;
 	public ServiceCalcio () {
 			
 		
@@ -42,12 +40,11 @@ public class ServiceCalcio {
 	
 	public ArrayList<String>getall() throws MalformedURLException, JSONException, IOException, ParseException {
 		
-		if (cont==1) {
+		
 		getcompetizione("2019");
 		getcompetizione("2015");
 		getcompetizione("2002");
-		cont++;
-		}
+		
 		
 		return out;
 		}
@@ -86,9 +83,9 @@ public class ServiceCalcio {
 		
 		
 		public  StatsGeneraliModel GetStats() throws MalformedURLException, JSONException, IOException, ParseException, Exception {
-			if(cont1==1) {
 			
-				 statsgenerali=new StatsGenerali("2019", "2015", "2002", false);
+			
+				 statsgenerali=new StatsGenerali("2019", "2015", "2002");
 		
 			int massimo=statsgenerali.MassimoNumeroSquadre(false);
 			int minimo=statsgenerali.MinimoNumeroSquadre(false);
@@ -97,8 +94,7 @@ public class ServiceCalcio {
 			int mediagiorni=statsgenerali.MediaDurataSggiorni(false);
 			double mediasg=statsgenerali.MediaStagioniSalvate(false);
 			statsgeneralimodel= new StatsGeneraliModel(massimo,minimo,media,mediamesi,mediagiorni,mediasg);
-			cont1++;
-			} 
+			
 
 				return statsgeneralimodel;
 			
@@ -110,16 +106,20 @@ public class ServiceCalcio {
 		
 		
 	
-		/*public int GetFiltri() throws MalformedURLException, JSONException, IOException, ParseException  {
+		public StatsGeneraliModel GetFiltri(FilterGenerali filter) throws MalformedURLException, JSONException, IOException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException  {
 			
-			//String id1=(String)filtro.get("id1");
-			//String id2 =(String)filtro.get("id2");
-			int prova2=honksh.MassimoNumeroSquadre(id1,id2,"null");
+			int massimo=filter.MassimoSquadreFilter();
+			int minimo=filter.MinimoSquadreFilter();
+			double media=filter.MedioSquadreFilter();
+			int mediamesi=filter.MediaDurataFilterMesi();
+			int mediagiorni=filter.MediaDurataFilterGiorni();
+			double mediasg=filter.MediaStagioniFilter();
+			filtergeneralimodel= new StatsGeneraliModel(massimo,minimo,media,mediamesi,mediagiorni,mediasg);
 			
 					
-			return  prova2;
+			return  filtergeneralimodel;
 			
-		}*/
+		}
 		
 		
 	}
