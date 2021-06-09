@@ -50,24 +50,24 @@ public ArrayList<String> SquadraMigliorAttacoFilter() throws MalformedURLExcepti
 		}
 public ArrayList<String> SquadraMigliorDifesaFilter() throws MalformedURLException, JSONException, IOException, ParseException{
 		
-		return SquadraMigliorDifesa();
+		return super.SquadraMigliorDifesa();
 	}
 	
 public ArrayList<String> SquadraMigliorDifferenzaFilter() throws MalformedURLException, JSONException, IOException, ParseException{
 		
-		return SquadraMigliorDifferenza();
+		return super.SquadraMigliorDifferenza();
 	}
 
 public ArrayList<String> SquadraMaggiorVinciteFilter() throws MalformedURLException, JSONException, IOException, ParseException{
 	
-	return SquadraMaggiorVincite();
+	return super.SquadraMaggiorVincite();
 	
 	
 }
 
 public ArrayList<String> SquadraMaggiorPerditeFilter() throws MalformedURLException, JSONException, IOException, ParseException{
 	
-	return SquadraMaggiorPerdite();
+	return super.SquadraMaggiorPerdite();
 	
 }
 

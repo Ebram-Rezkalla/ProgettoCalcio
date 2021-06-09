@@ -90,12 +90,12 @@ public int  GetNumberTipo(String tipo) {
 		StatsFilter();
 
 		ArrayList<String> difesa= new ArrayList<String>();
-		int small=sq.get(0).getGoalsAgainst();
-			for(int i=1;i<sq.size();i++) {
+		int small=sq.get(m).getGoalsAgainst();
+			for(int i=m+1;i<ndato;i++) {
 				if(sq.get(i).getGoalsAgainst()<small)
 				small=sq.get(i).getGoalsAgainst();	
 			}
-			for(int i=0;i<sq.size();i++) {
+			for(int i=m;i<ndato;i++) {
 				if (sq.get(i).getGoalsAgainst()==small)
 					difesa.add(sq.get(i).getNomesquadra());
 					}
@@ -107,12 +107,12 @@ public int  GetNumberTipo(String tipo) {
 		StatsFilter();
 
 		ArrayList<String> differenza= new ArrayList<String>();
-		int big=sq.get(0).getGoalDifferenza();
-			for(int i=1;i<sq.size();i++) {
+		int big=sq.get(m).getGoalDifferenza();
+			for(int i=m+1;i<ndato;i++) {
 				if(sq.get(i).getGoalDifferenza()>big)
 				big=sq.get(i).getGoalDifferenza();	
 			}
-			for(int i=0;i<sq.size();i++) {
+			for(int i=m;i<ndato;i++) {
 				if (sq.get(i).getGoalDifferenza()==big)
 					differenza.add(sq.get(i).getNomesquadra());
 					}
@@ -126,12 +126,12 @@ public int  GetNumberTipo(String tipo) {
 		StatsFilter();
 
 		ArrayList<String> vincite= new ArrayList<String>();
-		int big=sq.get(0).getVincite();
-			for(int i=1;i<sq.size();i++) {
+		int big=sq.get(m).getVincite();
+			for(int i=m+1;i<ndato;i++) {
 				if(sq.get(i).getVincite()>big)
 				big=sq.get(i).getVincite();	
 			}
-			for(int i=0;i<sq.size();i++) {
+			for(int i=m;i<ndato;i++) {
 				if (sq.get(i).getVincite()==big)
 					vincite.add(sq.get(i).getNomesquadra());
 					}
@@ -144,12 +144,12 @@ public int  GetNumberTipo(String tipo) {
 		StatsFilter();
 
 		ArrayList<String> perdite= new ArrayList<String>();
-		int big=sq.get(0).getPerdite();
-			for(int i=1;i<sq.size();i++) {
+		int big=sq.get(m).getPerdite();
+			for(int i=m+1;i<ndato;i++) {
 				if(sq.get(i).getPerdite()>big)
 				big=sq.get(i).getPerdite();	
 			}
-			for(int i=0;i<sq.size();i++) {
+			for(int i=m;i<ndato;i++) {
 				if (sq.get(i).getPerdite()==big)
 					perdite.add(sq.get(i).getNomesquadra());
 					}

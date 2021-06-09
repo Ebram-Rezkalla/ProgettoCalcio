@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import filters.FilterCompetizione;
 import filters.FilterGenerali;
 import model.Competizione;
 import model.Stagione;
@@ -98,16 +99,9 @@ public class ServiceCalcio {
 			statsgeneralimodel= new StatsGeneraliModel(massimo,minimo,media,mediamesi,mediagiorni,mediasg);
 			
 
-				return statsgeneralimodel;
-			
-			
-
-			
+				return statsgeneralimodel;	
 		}
 		
-		
-		
-	
 		public StatsGeneraliModel GetFiltri(FilterGenerali filter) throws MalformedURLException, JSONException, IOException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException  {
 			
 			int massimo=filter.MassimoSquadreFilter();
@@ -135,14 +129,23 @@ public class ServiceCalcio {
 			
 			StatsCompetizioniModel statscompetizionimodel = new StatsCompetizioniModel(numerostagionesalvate,migliorattaco,migliordifesa,migliordifferenza,maggiorvincite,maggiorperdite);
 			
-			return statscompetizionimodel;
-			
-		
-			
-			
+			return statscompetizionimodel;	
 		}
-		
-		
+
+		public StatsCompetizioniModel  GetFiltriComp(FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException {
+			
+			//StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
+			int numerostagionesalvate= filtercompetizioni.NumeroStagioneSalvate();
+			ArrayList<String> migliorattaco= filtercompetizioni.SquadraMigliorAttacoFilter();
+			ArrayList<String> migliordifesa= filtercompetizioni.SquadraMigliorDifesaFilter();
+			ArrayList<String> migliordifferenza =filtercompetizioni.SquadraMigliorDifferenzaFilter();
+			ArrayList<String> maggiorvincite =filtercompetizioni.SquadraMaggiorVinciteFilter() ;
+			ArrayList<String> maggiorperdite =filtercompetizioni.SquadraMaggiorPerditeFilter();
+			
+			StatsCompetizioniModel statscompetizionimodel = new StatsCompetizioniModel(numerostagionesalvate,migliorattaco,migliordifesa,migliordifferenza,maggiorvincite,maggiorperdite);
+			
+			return statscompetizionimodel;	
+		}
 	}
 
 	

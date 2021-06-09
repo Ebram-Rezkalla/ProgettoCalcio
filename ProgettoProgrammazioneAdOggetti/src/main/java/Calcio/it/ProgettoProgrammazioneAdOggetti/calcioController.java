@@ -64,8 +64,8 @@ public class calcioController {
 	}
 	
 	@PostMapping("/FilterComp")
-	public ResponseEntity<Object> SquadraMaggiorPerditeFilter(@RequestBody FilterCompetizione filtercomp) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
-		return new ResponseEntity<>(filtercomp.SquadraMigliorAttacoFilter(),HttpStatus.OK);
+	public ResponseEntity<Object> GetFiltriComp(@RequestBody FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
+		return new ResponseEntity<>(servicecalcio.GetFiltriComp(filtercompetizioni),HttpStatus.OK);
 	}
 	
 }
