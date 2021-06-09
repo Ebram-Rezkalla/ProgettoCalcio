@@ -25,7 +25,7 @@ public ParserJson() {
 }
 
 
-public ArrayList<Squadra> ParserSquadre (String codice) throws JSONException, MalformedURLException, IOException, ParseException {
+public ArrayList<Squadra> ParserSquadre (String codice,int tipo) throws JSONException, MalformedURLException, IOException, ParseException {
 	
 	ArrayList<Squadra> squadraList=new ArrayList<>();
 	int n= GetNumber (codice);
@@ -33,7 +33,7 @@ public ArrayList<Squadra> ParserSquadre (String codice) throws JSONException, Ma
 			JSONArray squadretot= new JSONArray(readfile("datisquadre.json"));
 			JSONObject competizione =squadretot.getJSONObject(n);
 			JSONArray standings = competizione.getJSONArray("standings");
-			JSONObject competizione2=standings.getJSONObject(0);
+			JSONObject competizione2=standings.getJSONObject(tipo);
 			JSONArray Teams = competizione2.getJSONArray("table");
 			for(int i=0;i<Teams.length();i++) {
 			JSONObject squadra1=Teams.getJSONObject(i);
@@ -75,7 +75,7 @@ public Competizione ParserCompetizioni (String codice) throws JSONException, Mal
 			 
 			JSONObject competizioneobj =stagionitot.getJSONObject(n);
 			JSONObject area=competizioneobj.getJSONObject("area");
-			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(codice),ParserSquadre(codice));
+			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(codice),ParserSquadre(codice,0));
 			return comp;
 			}
 

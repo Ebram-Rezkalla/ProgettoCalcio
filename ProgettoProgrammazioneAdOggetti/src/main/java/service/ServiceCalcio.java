@@ -17,7 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import filters.FilterGenerali;
 import model.Competizione;
 import model.Stagione;
+import model.StatsCompetizioniModel;
 import model.StatsGeneraliModel;
+import stats.StatsCompetizione;
 import stats.StatsGenerali;
 
 public class ServiceCalcio {
@@ -118,6 +120,25 @@ public class ServiceCalcio {
 			
 					
 			return  filtergeneralimodel;
+			
+		}
+		
+		public StatsCompetizioniModel  GetStatsComp(String id) throws MalformedURLException, JSONException, IOException, ParseException {
+			
+			StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
+			int numerostagionesalvate= statscompetizione.NumeroStagioneSalvate();
+			ArrayList<String> migliorattaco= statscompetizione.SquadraMigliorAttacco();
+			ArrayList<String> migliordifesa= statscompetizione.SquadraMigliorDifesa();
+			ArrayList<String> migliordifferenza =statscompetizione.SquadraMigliorDifferenza();
+			ArrayList<String> maggiorvincite =statscompetizione.SquadraMaggiorVincite() ;
+			ArrayList<String> maggiorperdite =statscompetizione.SquadraMaggiorPerdite();
+			
+			StatsCompetizioniModel statscompetizionimodel = new StatsCompetizioniModel(numerostagionesalvate,migliorattaco,migliordifesa,migliordifferenza,maggiorvincite,maggiorperdite);
+			
+			return statscompetizionimodel;
+			
+		
+			
 			
 		}
 		

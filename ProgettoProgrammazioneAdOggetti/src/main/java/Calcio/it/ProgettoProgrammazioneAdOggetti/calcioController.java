@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import filters.FilterCompetizione;
 import filters.FilterGenerali;
 import service.ParserJson;
 import service.ServiceCalcio;
+import stats.StatsCompetizione;
 import stats.StatsGenerali;
 
 @RestController
@@ -26,6 +28,8 @@ import stats.StatsGenerali;
 public class calcioController {
 	
 	ServiceCalcio servicecalcio=new ServiceCalcio();
+
+
 
 	
 	@GetMapping("/Competizioni") 
@@ -50,6 +54,18 @@ public class calcioController {
 	@PostMapping("/Filter")
 	public ResponseEntity<Object> GetFiltri(@RequestBody FilterGenerali filter) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
 		return new ResponseEntity<>(servicecalcio.GetFiltri(filter),HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/StatsComp") 
+
+	public ResponseEntity<Object> GetStatsComp(@RequestParam (value="id", defaultValue="") String code) throws MalformedURLException, JSONException, IOException, ParseException {
+	return new ResponseEntity<>(servicecalcio.GetStatsComp(code),HttpStatus.OK);
+	}
+	
+	@PostMapping("/FilterComp")
+	public ResponseEntity<Object> SquadraMaggiorPerditeFilter(@RequestBody FilterCompetizione filtercomp) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
+		return new ResponseEntity<>(filtercomp.SquadraMigliorAttacoFilter(),HttpStatus.OK);
 	}
 	
 }
