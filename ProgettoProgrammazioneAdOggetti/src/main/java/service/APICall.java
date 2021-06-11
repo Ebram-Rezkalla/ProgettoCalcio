@@ -15,6 +15,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.tomcat.util.json.ParseException;
 
+import exception.IdNotFound;
+
 public class APICall {
 	
 	
@@ -29,9 +31,7 @@ public class APICall {
 		BufferedReader in=new BufferedReader(new InputStreamReader(openConnection.getInputStream()));
 		input= in.readLine();
 		
-		} catch (IOException e ) {
-			e.printStackTrace();
-		}
+		} catch (IOException e ) {}
 		return input;
 		
 		
@@ -45,9 +45,7 @@ public class APICall {
 		PrintWriter printwriter = null;
 		try {
 			printwriter = new PrintWriter(new BufferedWriter(new FileWriter("datistagioni .json")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 		printwriter.println(writef);
 		printwriter.close();
 		}
@@ -60,32 +58,25 @@ public class APICall {
 		PrintWriter printwriter = null;
 		try {
 			printwriter = new PrintWriter(new BufferedWriter(new FileWriter("datisquadre.json")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} catch (IOException e) {}
 		printwriter.println(writef);
 		printwriter.close();
 		}
 	
 	
 	
-	public String readfile(String nomefile)  {
+	@SuppressWarnings("resource")
+	public String readfile(String nomefile) throws IdNotFound  {
 		BufferedReader read = null;
 	
 			try {
 				read = new BufferedReader(new FileReader(nomefile));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} catch (Exception e) {throw new IdNotFound("id non esiste");}
 		
 		String output = null;
 		try {
 			output = read.readLine();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) {throw new IdNotFound("id non esiste");}
 		
 		return output;
 		 

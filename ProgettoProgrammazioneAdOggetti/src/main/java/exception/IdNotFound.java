@@ -1,17 +1,17 @@
 package exception;
 
-public class IdNotFound extends Exception{
+public class IdNotFound extends RuntimeException{
 	
 	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
-	public IdNotFound() {
-		super("ID non esistente");
-		
+	public IdNotFound(String massege) {
+		super(massege);
+	}
+		public IdNotFound(String massege,Throwable cause) {	
+		super(massege,cause);
+
 	} 
 
 }

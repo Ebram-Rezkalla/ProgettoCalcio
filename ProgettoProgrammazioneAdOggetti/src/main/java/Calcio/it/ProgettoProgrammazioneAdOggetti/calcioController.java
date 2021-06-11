@@ -2,11 +2,14 @@ package Calcio.it.ProgettoProgrammazioneAdOggetti;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +32,7 @@ public class calcioController {
 
 	@GetMapping("/Competizioni") 
 
-	public ResponseEntity<Object> getall() throws IdNotFound {
+	public ResponseEntity<Object> getall() throws Exception {
 	return new ResponseEntity<>(servicecalcio.getall(),HttpStatus.OK);
 	}
 	
@@ -38,8 +41,9 @@ public class calcioController {
 	
 	@GetMapping("/Competizione") 
 
-	public ResponseEntity<Object> getSpecificComp(@RequestParam (value="id", defaultValue="") String code) throws  IdNotFound {
-	return new ResponseEntity<>(servicecalcio.getSpecificComp(code),HttpStatus.OK);
+	public ResponseEntity<Object> getSpecificComp(@RequestParam (value="id", defaultValue="") String code) {
+		return new ResponseEntity<>(servicecalcio.getSpecificComp(code),HttpStatus.OK);
+
 	}
 	
 	
@@ -66,5 +70,15 @@ public class calcioController {
 		return new ResponseEntity<>(servicecalcio.GetFiltriComp(filtercompetizioni),HttpStatus.OK);
 	}
 	
+	/*@GetMapping ("error")
+	
+	public ResponseEntity <Object> errorGet() throw WorngRequest {
+		throw new WrongRequest()
+	}*/
+	
+	
+		
+		
+
 }
 	
