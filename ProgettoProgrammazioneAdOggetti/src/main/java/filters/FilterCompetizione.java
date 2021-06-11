@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
 
+import exception.BodyException;
 import exception.IdNotFound;
 import stats.StatsCompetizione;
 
@@ -26,12 +27,12 @@ public class FilterCompetizione extends StatsCompetizione {
 }
 
 	
-public int VerificaNumero(int n) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
+public void VerificaNumero(int n) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		
 		sq=parserjson.ParserSquadre(id,GetNumberTipo( tipo));
-		if(n==0||n>sq.size())
-			return 0;
-		else return n;
+		if(n<=0||n>sq.size())
+			throw new BodyException("Numnero Inserito non giusto, puoi inserire un numero compreso tra 1 e "+sq.size()+".");
+		
 		
 	}
 	
@@ -46,7 +47,7 @@ public int VerificaNumero(int n) throws MalformedURLException, JSONException, IO
 	
 	
 public ArrayList<String> SquadraMigliorAttacoFilter() throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
-		
+		VerificaNumero(n);
 		return super.SquadraMigliorAttacco();
 		}
 public ArrayList<String> SquadraMigliorDifesaFilter() throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound{

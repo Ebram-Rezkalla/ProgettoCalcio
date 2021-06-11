@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
 
+import exception.BodyException;
 import exception.IdNotFound;
 import model.Squadra;
 import model.Stagione;
@@ -47,7 +48,8 @@ public class StatsCompetizione {
 
 	
 public int  GetNumberTipo(String tipo) {
-		
+		if(tipo==null)
+			throw new BodyException("Errore di Scrittura Body, Puoi Usare Solo la Parola(tipo) come Key ");
 		if (tipo.equals("Total"))
 			 return 0;
 		 
@@ -56,7 +58,7 @@ public int  GetNumberTipo(String tipo) {
 		 
 		 if (tipo.equals("Away"))
 			 return 2;
-		return (Integer) null;
+		 else throw new BodyException("Tipo Inserito Non Esistente, Puoi Usare Solamente Total-Home-Away");
 		}
 	
 	public void StatsFilter() {
@@ -76,9 +78,10 @@ public int  GetNumberTipo(String tipo) {
 		StatsFilter();
 	ArrayList<String> attaco= new ArrayList<String>();
 	int big=sq.get(m).getGoalsFor();
+
 		for(int i=m+1;i<ndato;i++) {
 			if(sq.get(i).getGoalsFor()>big)
-			big=sq.get(i).getGoalsFor();	
+			big=sq.get(i).getGoalsFor();
 		}
 		for(int i=m;i<ndato;i++) {
 			if (sq.get(i).getGoalsFor()==big)

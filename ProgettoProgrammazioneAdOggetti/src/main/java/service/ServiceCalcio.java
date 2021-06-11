@@ -42,7 +42,7 @@ public class ServiceCalcio {
 	}
 	
 	
-	public ArrayList<String>getall() throws IdNotFound {
+	public ArrayList<String>getall() throws Exception {
 		
 		
 		getcompetizione("2019");
@@ -54,7 +54,7 @@ public class ServiceCalcio {
 		}
 		
 		
-	public void getcompetizione(String code) throws  IdNotFound {
+	public void getcompetizione(String code) throws  Exception {
 		
 		
 		Competizione compi=servicecomp.ParserCompetizioni(code);
@@ -72,7 +72,7 @@ public class ServiceCalcio {
 		
 	}
 		
-		public Competizione getSpecificComp (String code) throws IdNotFound  {
+		public Competizione getSpecificComp (String code)    {
 			
 			Competizione compi=servicecomp.ParserCompetizioni(code);
 			

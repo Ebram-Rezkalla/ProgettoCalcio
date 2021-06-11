@@ -24,14 +24,15 @@ public ParserJson() {
 }
 
 
-public ArrayList<Squadra> ParserSquadre (String codice,int tipo) throws IdNotFound  {
+public ArrayList<Squadra> ParserSquadre (String codice,int tipo)   {
 	
 	ArrayList<Squadra> squadraList=new ArrayList<>();
 	int n= GetNumber (codice);
 			
 			JSONArray squadretot;
-			try {
-				squadretot = new JSONArray(readfile("datisquadre.json"));
+				try {
+					squadretot = new JSONArray(readfile("datisquadre.json"));
+				
 			
 			JSONObject competizione =squadretot.getJSONObject(n);
 			JSONArray standings = competizione.getJSONArray("standings");
@@ -43,22 +44,22 @@ public ArrayList<Squadra> ParserSquadre (String codice,int tipo) throws IdNotFou
 			s=new Squadra((int)squadra1.get("position"),(String)dati.get("name"),(int)squadra1.get("won"),(int)squadra1.get("lost"),(int)squadra1.get("goalsFor"),(int)squadra1.get("goalsAgainst"),(int)squadra1.get("goalDifference"));
 			squadraList.add(s);
 			}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				} catch (JSONException e) {
+				}
 			return squadraList;
 			}
 
 
-public ArrayList<Stagione> ParserStagioni (String codice) throws IdNotFound  {
+public ArrayList<Stagione> ParserStagioni (String codice)   {
 	
 	ArrayList<Stagione> StagioneList=new ArrayList<>();
 	int n= GetNumber (codice);
 			
 			JSONArray stagionitot;
-			try {
-				stagionitot = new JSONArray(readfile("datistagioni.json"));
+				try {
+					stagionitot = new JSONArray(readfile("datistagioni.json"));
+				
+				
 			
 			JSONObject Stagioneobj = stagionitot.getJSONObject(n);
 			JSONArray Stagioni = Stagioneobj.getJSONArray("seasons");
@@ -73,8 +74,7 @@ public ArrayList<Stagione> ParserStagioni (String codice) throws IdNotFound  {
 			sg=new Stagione((String) Stagione.get("startDate"),(String) Stagione.get("endDate"),(String) vincitore.get("name"));
 			StagioneList.add(sg);
 			}}} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
 			return StagioneList;
 		}
@@ -82,26 +82,31 @@ public ArrayList<Stagione> ParserStagioni (String codice) throws IdNotFound  {
 
 
 
-public Competizione ParserCompetizioni (String codice) throws IdNotFound  {
+public Competizione ParserCompetizioni (String codice)   {
 	int n= GetNumber (codice);
 		JSONArray stagionitot;
-		try {
-			stagionitot = new JSONArray(readfile("datistagioni.json"));
+		
+			try {
+				stagionitot = new JSONArray(readfile("datistagioni.json"));
+			
+			
 			JSONObject competizioneobj;
 			competizioneobj = stagionitot.getJSONObject(n);
 			JSONObject area;
 			area = competizioneobj.getJSONObject("area");
 			comp=new Competizione ((String)area.get("name"),(String)competizioneobj.get("name"),(int)competizioneobj.get("id"),ParserStagioni(codice),ParserSquadre(codice,0));
-			} catch (JSONException | IdNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (JSONException e) {
+
 			}
 			return comp;
 			}
 
 
- public int GetNumber (String codice) throws IdNotFound {
-	 
+ public int GetNumber (String codice){
+	 if(codice==null)
+		 throw new IdNotFound("Errore..Puoi Usare Solo id1 e id2");
+	 if (codice.isEmpty())
+		 throw new IdNotFound("ID Non Inserito..");
 	 if (codice.equals("2019"))
 		 return 0;
 	 
@@ -110,7 +115,8 @@ public Competizione ParserCompetizioni (String codice) throws IdNotFound  {
 	 
 	 if (codice.equals("2002"))
 		 return 2;
-	 else throw new IdNotFound();
+	 else throw new IdNotFound("ID Non Esistente..");
+
  }
 
 
