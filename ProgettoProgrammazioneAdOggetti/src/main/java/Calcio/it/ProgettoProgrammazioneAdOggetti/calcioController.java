@@ -31,12 +31,14 @@ public class calcioController {
 
 
 
-	
 	@GetMapping("/Competizioni") 
 
 	public ResponseEntity<Object> getall() throws MalformedURLException, JSONException, IOException, ParseException {
 	return new ResponseEntity<>(servicecalcio.getall(),HttpStatus.OK);
 	}
+	
+		
+	
 	
 	@GetMapping("/Competizione") 
 
