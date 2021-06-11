@@ -1,13 +1,13 @@
 package service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import exception.IdNotFound;
+import exception.BodyException;
+import exception.NotFound;
 import model.Competizione;
 import model.Squadra;
 import model.Stagione;
@@ -57,10 +57,7 @@ public ArrayList<Stagione> ParserStagioni (String codice)   {
 			
 			JSONArray stagionitot;
 				try {
-					stagionitot = new JSONArray(readfile("datistagioni.json"));
-				
-				
-			
+			stagionitot = new JSONArray(readfile("datistagioni.json"));
 			JSONObject Stagioneobj = stagionitot.getJSONObject(n);
 			JSONArray Stagioni = Stagioneobj.getJSONArray("seasons");
 			for(int i=0;i<Stagioni.length();i++) {
@@ -104,9 +101,9 @@ public Competizione ParserCompetizioni (String codice)   {
 
  public int GetNumber (String codice){
 	 if(codice==null)
-		 throw new IdNotFound("Errore..Puoi Usare Solo id1 e id2");
+		 throw new BodyException("Errore, Puoi Usare Solo id1 e id2 Come Key.");
 	 if (codice.isEmpty())
-		 throw new IdNotFound("ID Non Inserito..");
+		 throw new NotFound("ID Non Inserito, Si Prega di Inserire Un ID");
 	 if (codice.equals("2019"))
 		 return 0;
 	 
@@ -115,7 +112,7 @@ public Competizione ParserCompetizioni (String codice)   {
 	 
 	 if (codice.equals("2002"))
 		 return 2;
-	 else throw new IdNotFound("ID Non Esistente..");
+	 else throw new NotFound("ID Non Corretto, Si Prega di Usare le ID Disponibili(2002,2015,2019).");
 
  }
 

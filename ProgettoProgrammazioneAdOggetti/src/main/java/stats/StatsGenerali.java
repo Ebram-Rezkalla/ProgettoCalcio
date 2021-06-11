@@ -1,13 +1,9 @@
 package stats;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.apache.tomcat.util.json.ParseException;
-import org.json.JSONException;
 
 import model.Squadra;
 import model.Stagione;
@@ -32,7 +28,7 @@ public class StatsGenerali {
 	 double MediaGiorniStagione;
 
 
-	public StatsGenerali(String id1,String id2,String id3) throws MalformedURLException, JSONException, IOException, Exception{
+	public StatsGenerali(String id1,String id2,String id3) {
 		S1=statistiche.ParserSquadre(id1,0);
 		S2=statistiche.ParserSquadre(id2,0);
 		Sta1=statistiche.ParserStagioni(id1);
@@ -44,7 +40,7 @@ public class StatsGenerali {
 
 		}
 	
-	public int MassimoNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
+	public int MassimoNumeroSquadre(boolean f)  {
 		if(f) {
 			
 			if(S1.size()>=S2.size())
@@ -69,7 +65,7 @@ public class StatsGenerali {
 	
 	
 	
-	public int MinimoNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
+	public int MinimoNumeroSquadre(boolean f)  {
 		if(f) {
 			
 			if(S1.size()<=S2.size())
@@ -94,7 +90,7 @@ public class StatsGenerali {
 	
 	
 	
-	public double MedioNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
+	public double MedioNumeroSquadre(boolean f)  {
 		if(f) {
 		
 		int	sommafilter=S1.size()+S2.size();
@@ -111,13 +107,20 @@ public class StatsGenerali {
 	
 
 
-public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
+public double  DurataGiorni(ArrayList<Stagione> Sg)   {
 
 		
 
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-		Date DataInizio=sdf.parse(Sg.get(0).getDataInizio());
-		Date DataFine=sdf.parse(Sg.get(0).getDataFine());
+		Date DataInizio = null;
+		Date DataFine = null;
+		try {
+			DataInizio = sdf.parse(Sg.get(0).getDataInizio());
+		DataFine=sdf.parse(Sg.get(0).getDataFine());
+		} catch (java.text.ParseException e) {
+			e.printStackTrace();
+		}
+		
 
 		double differenzaTempo= (DataFine.getTime() - DataInizio.getTime());
 		double differenzaGironi=(differenzaTempo / (1000 * 60 * 60 * 24))% 365;
@@ -128,7 +131,7 @@ public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException
 	
 	
 	
-	public int  MediaDurataSgMesi(boolean f) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
+	public int  MediaDurataSgMesi(boolean f)  {
 		if(f) {
 			double giorniSg1= DurataGiorni(Sta1);
 			double giorniSg2= DurataGiorni(Sta2);
@@ -146,14 +149,14 @@ public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException
 		
 	}
 	
-	public int MediaDurataSggiorni(boolean f) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
+	public int MediaDurataSggiorni(boolean f) {
 		int prova =MediaDurataSgMesi(f);
 		int restogiorni = (int) (MediaGiorniStagione - (30*prova));
 		return restogiorni;
 	}
 	
 	
-	public double MediaStagioniSalvate (boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
+	public double MediaStagioniSalvate (boolean f)  {
 		
 		if(f) {
 			int sommafilter=Sta1.size()+Sta2.size();
@@ -168,9 +171,4 @@ public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException
 	
 			}
 		}
-	
-
-	
-
-
 }

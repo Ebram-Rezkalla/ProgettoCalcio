@@ -14,7 +14,7 @@ public class FilterGenerali {
 	String id2;
 	StatsGenerali statsgenerali;
 	
-	public FilterGenerali(String id1,String id2) throws MalformedURLException, JSONException, IOException, Exception {
+	public FilterGenerali(String id1,String id2)  {
 		this.id1=id1;
 		this.id2=id2;
 		this.statsgenerali=new StatsGenerali(id1,id2,"null");
@@ -22,7 +22,7 @@ public class FilterGenerali {
 	
 	
 	
-public int MassimoSquadreFilter() throws MalformedURLException, JSONException, IOException, ParseException, org.apache.tomcat.util.json.ParseException  {
+public int MassimoSquadreFilter()   {
 			
 			int massimo=statsgenerali.MassimoNumeroSquadre(true);
 			return  massimo;
@@ -30,32 +30,32 @@ public int MassimoSquadreFilter() throws MalformedURLException, JSONException, I
 
 
 
-public int MinimoSquadreFilter() throws MalformedURLException, JSONException, IOException, ParseException, org.apache.tomcat.util.json.ParseException  {
+public int MinimoSquadreFilter()  {
 	
 	int minimo=statsgenerali.MinimoNumeroSquadre(true);
 	return  minimo;
 	}
 
 
-public double MedioSquadreFilter() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException {
+public double MedioSquadreFilter()  {
 	
 	double media=statsgenerali.MedioNumeroSquadre(true);
 	return media;
 	}
 
-public int MediaDurataFilterMesi() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException, java.text.ParseException {
+public int MediaDurataFilterMesi() {
 	
 	int mediadurata=statsgenerali.MediaDurataSgMesi(true);
 	return mediadurata;
 	}
 
-public int MediaDurataFilterGiorni() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException, java.text.ParseException {
+public int MediaDurataFilterGiorni()  {
 	
 	int mediadurata=statsgenerali.MediaDurataSggiorni(true);
 	return mediadurata;
 	}
 
-public double MediaStagioniFilter() throws MalformedURLException, JSONException, IOException, org.apache.tomcat.util.json.ParseException {
+public double MediaStagioniFilter()  {
 	
 	double mediastagioni=statsgenerali.MediaStagioniSalvate(true);
 	return mediastagioni;

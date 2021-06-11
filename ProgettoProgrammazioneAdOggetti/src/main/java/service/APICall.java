@@ -8,14 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.apache.tomcat.util.json.ParseException;
 
-import exception.IdNotFound;
 
 public class APICall {
 	
@@ -66,17 +63,22 @@ public class APICall {
 	
 	
 	@SuppressWarnings("resource")
-	public String readfile(String nomefile) throws IdNotFound  {
+	public String readfile(String nomefile)   {
 		BufferedReader read = null;
-	
-			try {
-				read = new BufferedReader(new FileReader(nomefile));
-			} catch (Exception e) {throw new IdNotFound("id non esiste");}
-		
-		String output = null;
 		try {
-			output = read.readLine();
-		} catch (Exception e) {throw new IdNotFound("id non esiste");}
+				read = new BufferedReader(new FileReader(nomefile));
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			
+		String output = null;
+		
+			try {
+				output = read.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
 		
 		return output;
 		 

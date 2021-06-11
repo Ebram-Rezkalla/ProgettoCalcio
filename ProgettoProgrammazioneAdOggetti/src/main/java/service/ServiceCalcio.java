@@ -1,20 +1,10 @@
 package service;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import org.apache.tomcat.util.json.ParseException;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import exception.IdNotFound;
+import exception.NotFound;
 import filters.FilterCompetizione;
 import filters.FilterGenerali;
 import model.Competizione;
@@ -42,7 +32,7 @@ public class ServiceCalcio {
 	}
 	
 	
-	public ArrayList<String>getall() throws Exception {
+	public ArrayList<String>getall() {
 		
 		
 		getcompetizione("2019");
@@ -54,7 +44,7 @@ public class ServiceCalcio {
 		}
 		
 		
-	public void getcompetizione(String code) throws  Exception {
+	public void getcompetizione(String code)  {
 		
 		
 		Competizione compi=servicecomp.ParserCompetizioni(code);
@@ -86,7 +76,7 @@ public class ServiceCalcio {
 		
 		
 		
-		public  StatsGeneraliModel GetStats() throws MalformedURLException, JSONException, IOException, Exception  {
+		public  StatsGeneraliModel GetStats(){
 			
 			
 				 statsgenerali=new StatsGenerali("2019", "2015", "2002");
@@ -103,7 +93,7 @@ public class ServiceCalcio {
 				return statsgeneralimodel;	
 		}
 		
-		public StatsGeneraliModel GetFiltri(FilterGenerali filter) throws MalformedURLException, JSONException, IOException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException  {
+		public StatsGeneraliModel GetFiltri(FilterGenerali filter)  {
 			
 			int massimo=filter.MassimoSquadreFilter();
 			int minimo=filter.MinimoSquadreFilter();
@@ -118,7 +108,7 @@ public class ServiceCalcio {
 			
 		}
 		
-		public StatsCompetizioniModel  GetStatsComp(String id) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
+		public StatsCompetizioniModel  GetStatsComp(String id)  {
 			
 			StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
 			int numerostagionesalvate= statscompetizione.NumeroStagioneSalvate();
@@ -133,16 +123,16 @@ public class ServiceCalcio {
 			return statscompetizionimodel;	
 		}
 
-		public StatsCompetizioniModel  GetFiltriComp(FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
+		public StatsCompetizioniModel  GetFiltriComp(FilterCompetizione filtercompetizioni) throws NotFound {
 			
 			//StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
-			int numerostagionesalvate= filtercompetizioni.NumeroStagioneSalvate();
 			ArrayList<String> migliorattaco= filtercompetizioni.SquadraMigliorAttacoFilter();
 			ArrayList<String> migliordifesa= filtercompetizioni.SquadraMigliorDifesaFilter();
 			ArrayList<String> migliordifferenza =filtercompetizioni.SquadraMigliorDifferenzaFilter();
 			ArrayList<String> maggiorvincite =filtercompetizioni.SquadraMaggiorVinciteFilter() ;
 			ArrayList<String> maggiorperdite =filtercompetizioni.SquadraMaggiorPerditeFilter();
-			
+			int numerostagionesalvate= filtercompetizioni.NumeroStagioneSalvate();
+
 			StatsCompetizioniModel statscompetizionimodel = new StatsCompetizioniModel(numerostagionesalvate,migliorattaco,migliordifesa,migliordifferenza,maggiorvincite,maggiorperdite);
 			
 			return statscompetizionimodel;	
