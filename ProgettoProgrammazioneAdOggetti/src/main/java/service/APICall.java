@@ -2,6 +2,7 @@ package service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,41 +19,74 @@ public class APICall {
 	
 	
 	
-	public String ChiamataAPI(String url) throws MalformedURLException, IOException {
+	public String ChiamataAPI(String url) {
+		String input = null;
+		try {
+		HttpsURLConnection openConnection;
 		
-		HttpsURLConnection openConnection= (HttpsURLConnection) new URL(url).openConnection();
+			openConnection = (HttpsURLConnection) new URL(url).openConnection();
 		openConnection.addRequestProperty("X-Auth-Token", "7c3732db0c284300b743a2f9d193e9e2");
 		BufferedReader in=new BufferedReader(new InputStreamReader(openConnection.getInputStream()));
-		String input= in.readLine();
+		input= in.readLine();
+		
+		} catch (IOException e ) {
+			e.printStackTrace();
+		}
 		return input;
+		
+		
 		}
 
-	public void writefileStagioni() throws MalformedURLException, IOException {
+	public void writefileStagioni()  {
 		String write1=ChiamataAPI("https://api.football-data.org/v2/competitions/2019");
 		String write2=ChiamataAPI("https://api.football-data.org/v2/competitions/2015");
 		String write3=ChiamataAPI("https://api.football-data.org/v2/competitions/2002");
 		String writef = "["+write1+","+write2+","+write3+"]";
-		PrintWriter printwriter= new PrintWriter(new BufferedWriter(new FileWriter("datistagioni .json")));
+		PrintWriter printwriter = null;
+		try {
+			printwriter = new PrintWriter(new BufferedWriter(new FileWriter("datistagioni .json")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		printwriter.println(writef);
 		printwriter.close();
 		}
 	
-	public void writefileSquadre() throws MalformedURLException, IOException {
+	public void writefileSquadre()  {
 		String write1=ChiamataAPI("https://api.football-data.org/v2/competitions/2019/standings");
 		String write2=ChiamataAPI("https://api.football-data.org/v2/competitions/2015/standings");
 		String write3=ChiamataAPI("https://api.football-data.org/v2/competitions/2002/standings");
 		String writef = "["+write1+","+write2+","+write3+"]";
-		PrintWriter printwriter= new PrintWriter(new BufferedWriter(new FileWriter("datisquadre.json")));
+		PrintWriter printwriter = null;
+		try {
+			printwriter = new PrintWriter(new BufferedWriter(new FileWriter("datisquadre.json")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		printwriter.println(writef);
 		printwriter.close();
 		}
 	
 	
 	
-	public String readfile(String nomefile) throws ParseException, IOException {
-		BufferedReader read=new BufferedReader(new FileReader(nomefile));
-		String output=read.readLine();
-		//read.close();
+	public String readfile(String nomefile)  {
+		BufferedReader read = null;
+	
+			try {
+				read = new BufferedReader(new FileReader(nomefile));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		String output = null;
+		try {
+			output = read.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return output;
 		 
 		

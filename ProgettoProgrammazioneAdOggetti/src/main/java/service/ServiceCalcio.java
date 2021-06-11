@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import exception.IdNotFound;
 import filters.FilterCompetizione;
 import filters.FilterGenerali;
 import model.Competizione;
@@ -41,7 +42,7 @@ public class ServiceCalcio {
 	}
 	
 	
-	public ArrayList<String>getall() throws MalformedURLException, JSONException, IOException, ParseException {
+	public ArrayList<String>getall() throws IdNotFound {
 		
 		
 		getcompetizione("2019");
@@ -53,7 +54,7 @@ public class ServiceCalcio {
 		}
 		
 		
-	public void getcompetizione(String code) throws MalformedURLException, JSONException, IOException, ParseException {
+	public void getcompetizione(String code) throws  IdNotFound {
 		
 		
 		Competizione compi=servicecomp.ParserCompetizioni(code);
@@ -71,7 +72,7 @@ public class ServiceCalcio {
 		
 	}
 		
-		public Competizione getSpecificComp (String code) throws MalformedURLException, JSONException, IOException, ParseException {
+		public Competizione getSpecificComp (String code) throws IdNotFound  {
 			
 			Competizione compi=servicecomp.ParserCompetizioni(code);
 			
@@ -85,7 +86,7 @@ public class ServiceCalcio {
 		
 		
 		
-		public  StatsGeneraliModel GetStats() throws MalformedURLException, JSONException, IOException, ParseException, Exception {
+		public  StatsGeneraliModel GetStats() throws MalformedURLException, JSONException, IOException, Exception  {
 			
 			
 				 statsgenerali=new StatsGenerali("2019", "2015", "2002");
@@ -117,7 +118,7 @@ public class ServiceCalcio {
 			
 		}
 		
-		public StatsCompetizioniModel  GetStatsComp(String id) throws MalformedURLException, JSONException, IOException, ParseException {
+		public StatsCompetizioniModel  GetStatsComp(String id) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 			
 			StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
 			int numerostagionesalvate= statscompetizione.NumeroStagioneSalvate();
@@ -132,7 +133,7 @@ public class ServiceCalcio {
 			return statscompetizionimodel;	
 		}
 
-		public StatsCompetizioniModel  GetFiltriComp(FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException {
+		public StatsCompetizioniModel  GetFiltriComp(FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 			
 			//StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
 			int numerostagionesalvate= filtercompetizioni.NumeroStagioneSalvate();
