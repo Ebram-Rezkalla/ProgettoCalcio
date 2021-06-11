@@ -26,7 +26,14 @@ public class StatsCompetizione {
 	String tipo;
 	int n;
 	String pu;
+<<<<<<< HEAD
 	public StatsCompetizione(String id,String tipo,int n,String pu)  {
+=======
+	
+	// costruttore StatsCompetizione
+	
+	public StatsCompetizione(String id,String tipo,int n,String pu) throws MalformedURLException, JSONException, IOException, ParseException {
+>>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 		
 		this.id=id;
 		this.tipo=tipo;
@@ -35,7 +42,7 @@ public class StatsCompetizione {
 
 	}
 
-
+//metodo che restituisce il numero delle stagioni salvate 
 
 	public int NumeroStagioneSalvate()  {
 		
@@ -46,7 +53,7 @@ public class StatsCompetizione {
 		return numerosta;
 	}
 	
-
+//metodo che restituice il tipo delle partite  e verifica anche la correttezza della scrittura del tipo 
 	
 public int  GetNumberTipo(String tipo) {
 		if(tipo==null)
@@ -61,6 +68,8 @@ public int  GetNumberTipo(String tipo) {
 			 return 2;
 		 else throw new BodyException("Tipo Inserito Non Corretto,Si Prega di Usare Solamente(Total,Home,Away)");
 		}
+ 
+// metodo ausiliaro per la classe filter 
 	
 	public void StatsFilter() {
 		ndato=sq.size();
@@ -74,6 +83,7 @@ public int  GetNumberTipo(String tipo) {
 		
 	}
 	
+	// metodo che restituisce le squadre che hanno il mioglior attacco 
 	
 	public ArrayList<String> SquadraMigliorAttacco ()  {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
@@ -91,7 +101,14 @@ public int  GetNumberTipo(String tipo) {
 				}
 		return attaco;
 }
+<<<<<<< HEAD
 	public ArrayList<String> SquadraMigliorDifesa () {
+=======
+	
+	// metodo che restituisce le squadre che hanno la  mioglior difesa
+	
+	public ArrayList<String> SquadraMigliorDifesa () throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
+>>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 
@@ -107,6 +124,8 @@ public int  GetNumberTipo(String tipo) {
 					}
 			return difesa;
 	}
+
+	// metodo che restituisce le squadre che hanno la miglior differenza goal
 	
 	public ArrayList<String> SquadraMigliorDifferenza ()  {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
@@ -126,6 +145,8 @@ public int  GetNumberTipo(String tipo) {
 		
 	}
 	
+	// metodo che restituisce le squadre che hanno le maggior vincite
+	
 	
 	public ArrayList<String> SquadraMaggiorVincite ()  {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
@@ -144,6 +165,7 @@ public int  GetNumberTipo(String tipo) {
 			return vincite;
 		
 	}
+	// metodo che restituisce le squadre che hanno le maggior perdite 
 	
 	public ArrayList<String> SquadraMaggiorPerdite ()  {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));

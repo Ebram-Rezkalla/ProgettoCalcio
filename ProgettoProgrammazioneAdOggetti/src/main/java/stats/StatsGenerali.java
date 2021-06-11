@@ -26,9 +26,16 @@ public class StatsGenerali {
 	
 	StatsGeneraliModel statsgeneralimodel;
 	 double MediaGiorniStagione;
+<<<<<<< HEAD
 
 
 	public StatsGenerali(String id1,String id2,String id3) {
+=======
+ 
+// Costruttore StatsGenerali
+	 
+	public StatsGenerali(String id1,String id2,String id3) throws MalformedURLException, JSONException, IOException, Exception{
+>>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 		S1=statistiche.ParserSquadre(id1,0);
 		S2=statistiche.ParserSquadre(id2,0);
 		Sta1=statistiche.ParserStagioni(id1);
@@ -40,7 +47,13 @@ public class StatsGenerali {
 
 		}
 	
+<<<<<<< HEAD
 	public int MassimoNumeroSquadre(boolean f)  {
+=======
+	// metodo che restituisce il numero massimo di squadre
+	
+	public int MassimoNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
+>>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 		if(f) {
 			
 			if(S1.size()>=S2.size())
@@ -63,7 +76,7 @@ public class StatsGenerali {
 		
 		}}
 	
-	
+	// metodo che restituisce il numero minimo di squadre
 	
 	public int MinimoNumeroSquadre(boolean f)  {
 		if(f) {
@@ -88,7 +101,7 @@ public class StatsGenerali {
 		
 		}}
 	
-	
+	// metodo che restituisce il numero medio di squadre
 	
 	public double MedioNumeroSquadre(boolean f)  {
 		if(f) {
@@ -105,7 +118,7 @@ public class StatsGenerali {
 		
 	}
 	
-
+	// metodo che restituisce la durata della stagione in giorni
 
 public double  DurataGiorni(ArrayList<Stagione> Sg)   {
 
@@ -129,7 +142,7 @@ public double  DurataGiorni(ArrayList<Stagione> Sg)   {
 			}
 	
 	
-	
+ //metodo che restituisce la durata della stagione in mesi
 	
 	public int  MediaDurataSgMesi(boolean f)  {
 		if(f) {
@@ -149,14 +162,24 @@ public double  DurataGiorni(ArrayList<Stagione> Sg)   {
 		
 	}
 	
+<<<<<<< HEAD
 	public int MediaDurataSggiorni(boolean f) {
+=======
+	 //metodo che restituisce il resto di giorni da mesi della durata della stagione 
+	public int MediaDurataSggiorni(boolean f) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
+>>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 		int prova =MediaDurataSgMesi(f);
 		int restogiorni = (int) (MediaGiorniStagione - (30*prova));
 		return restogiorni;
 	}
 	
+<<<<<<< HEAD
 	
 	public double MediaStagioniSalvate (boolean f)  {
+=======
+	 //metodo che restituisce la media delle stagione salvate della competizione 
+	public double MediaStagioniSalvate (boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
+>>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 		
 		if(f) {
 			int sommafilter=Sta1.size()+Sta2.size();

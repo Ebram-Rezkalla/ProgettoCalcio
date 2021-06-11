@@ -5,10 +5,15 @@ public class Stagione {
 	private String dataFine;
 	private String vincitore;
 	
+	// Costruttore Stagione
+	
 	public Stagione (String dataInizio, String dataFine, String vincitore) {
 		this.dataInizio=dataInizio;
 		this.dataFine=dataFine;
 		this.vincitore=vincitore;
+		
+		// getters e setters pel la classe Stagione
+
 }
 
 	public String getDataInizio() {
