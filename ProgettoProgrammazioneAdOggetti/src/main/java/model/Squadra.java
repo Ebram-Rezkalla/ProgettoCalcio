@@ -8,6 +8,8 @@ public class Squadra {
 	private int goalsFor;
 	private int goalsAgainst;
 	private int goalDifferenza;
+	
+	// Costruttore Squadra
 
 	public Squadra(int posizione,String nomesquadra, int vincite,int perdite,int goalsFor,int goalsAgainst,int goalDifferenza) {
 
@@ -18,6 +20,8 @@ public class Squadra {
 	this.goalsFor=goalsFor;
 	this.goalsAgainst=goalsAgainst;
 	this.goalDifferenza=goalDifferenza;
+	
+	// getters e setters pel la classe Squadra
 }
 
 	public int getPosizione() {

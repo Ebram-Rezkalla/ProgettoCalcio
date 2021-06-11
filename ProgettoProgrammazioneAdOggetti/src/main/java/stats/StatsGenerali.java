@@ -30,8 +30,9 @@ public class StatsGenerali {
 	
 	StatsGeneraliModel statsgeneralimodel;
 	 double MediaGiorniStagione;
-
-
+ 
+// Costruttore StatsGenerali
+	 
 	public StatsGenerali(String id1,String id2,String id3) throws MalformedURLException, JSONException, IOException, Exception{
 		S1=statistiche.ParserSquadre(id1,0);
 		S2=statistiche.ParserSquadre(id2,0);
@@ -43,6 +44,8 @@ public class StatsGenerali {
 		}
 
 		}
+	
+	// metodo che restituisce il numero massimo di squadre
 	
 	public int MassimoNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
 		if(f) {
@@ -67,7 +70,7 @@ public class StatsGenerali {
 		
 		}}
 	
-	
+	// metodo che restituisce il numero minimo di squadre
 	
 	public int MinimoNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
 		if(f) {
@@ -92,7 +95,7 @@ public class StatsGenerali {
 		
 		}}
 	
-	
+	// metodo che restituisce il numero medio di squadre
 	
 	public double MedioNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
 		if(f) {
@@ -109,7 +112,7 @@ public class StatsGenerali {
 		
 	}
 	
-
+	// metodo che restituisce la durata della stagione in giorni
 
 public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
 
@@ -126,7 +129,7 @@ public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException
 			}
 	
 	
-	
+ //metodo che restituisce la durata della stagione in mesi
 	
 	public int  MediaDurataSgMesi(boolean f) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
 		if(f) {
@@ -146,13 +149,14 @@ public double  DurataGiorni(ArrayList<Stagione> Sg) throws MalformedURLException
 		
 	}
 	
+	 //metodo che restituisce il resto di giorni da mesi della durata della stagione 
 	public int MediaDurataSggiorni(boolean f) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
 		int prova =MediaDurataSgMesi(f);
 		int restogiorni = (int) (MediaGiorniStagione - (30*prova));
 		return restogiorni;
 	}
 	
-	
+	 //metodo che restituisce la media delle stagione salvate della competizione 
 	public double MediaStagioniSalvate (boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
 		
 		if(f) {

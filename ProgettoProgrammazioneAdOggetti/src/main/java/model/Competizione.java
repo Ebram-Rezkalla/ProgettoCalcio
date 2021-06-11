@@ -10,6 +10,8 @@ public class Competizione {
 	private ArrayList<Squadra> squadraList= new ArrayList<>();
 	private ArrayList<Stagione> stagioneList= new ArrayList<>();
 	
+	// Costruttore Competizione
+	
 	public Competizione (String nomePaese , String nome,int id,ArrayList<Stagione> stagioneList,ArrayList<Squadra> squadraList) {
 		this.nomePaese = nomePaese ;
 		this.nome = nome;
@@ -17,7 +19,7 @@ public class Competizione {
 		this.squadraList=squadraList;
 		this.stagioneList=stagioneList;
 		
-		
+	// getters e setters pel la classe Competizione	
 	}
 
 	public int getId() {
