@@ -11,7 +11,7 @@ import service.APICall;
 @SpringBootApplication
 public class ProgettoProgrammazioneAdOggettiApplication {
 
-	public static void main(String[] args) throws MalformedURLException, IOException {
+	public static void main(String[] args) throws IOException  {
 		SpringApplication.run(ProgettoProgrammazioneAdOggettiApplication.class, args);
 		
 		APICall apicall = new APICall();

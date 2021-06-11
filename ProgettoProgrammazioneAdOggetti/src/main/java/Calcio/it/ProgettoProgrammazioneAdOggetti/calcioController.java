@@ -5,8 +5,6 @@ import java.net.MalformedURLException;
 
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import exception.IdNotFound;
 import filters.FilterCompetizione;
 import filters.FilterGenerali;
-import service.ParserJson;
 import service.ServiceCalcio;
-import stats.StatsCompetizione;
-import stats.StatsGenerali;
 
 @RestController
 
@@ -34,13 +30,13 @@ public class calcioController {
 	
 	@GetMapping("/Competizioni") 
 
-	public ResponseEntity<Object> getall() throws MalformedURLException, JSONException, IOException, ParseException {
+	public ResponseEntity<Object> getall() throws IdNotFound {
 	return new ResponseEntity<>(servicecalcio.getall(),HttpStatus.OK);
 	}
 	
 	@GetMapping("/Competizione") 
 
-	public ResponseEntity<Object> getSpecificComp(@RequestParam (value="id", defaultValue="") String code) throws MalformedURLException, JSONException, IOException, ParseException {
+	public ResponseEntity<Object> getSpecificComp(@RequestParam (value="id", defaultValue="") String code) throws  IdNotFound {
 	return new ResponseEntity<>(servicecalcio.getSpecificComp(code),HttpStatus.OK);
 	}
 	
@@ -59,12 +55,12 @@ public class calcioController {
 	
 	@GetMapping("/StatsComp") 
 
-	public ResponseEntity<Object> GetStatsComp(@RequestParam (value="id", defaultValue="") String code) throws MalformedURLException, JSONException, IOException, ParseException {
+	public ResponseEntity<Object> GetStatsComp(@RequestParam (value="id", defaultValue="") String code) throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 	return new ResponseEntity<>(servicecalcio.GetStatsComp(code),HttpStatus.OK);
 	}
 	
 	@PostMapping("/FilterComp")
-	public ResponseEntity<Object> GetFiltriComp(@RequestBody FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException {
+	public ResponseEntity<Object> GetFiltriComp(@RequestBody FilterCompetizione filtercompetizioni) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException, com.sun.el.parser.ParseException, IdNotFound {
 		return new ResponseEntity<>(servicecalcio.GetFiltriComp(filtercompetizioni),HttpStatus.OK);
 	}
 	

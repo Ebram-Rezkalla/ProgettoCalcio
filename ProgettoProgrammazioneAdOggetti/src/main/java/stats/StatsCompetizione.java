@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.tomcat.util.json.ParseException;
 import org.json.JSONException;
 
+import exception.IdNotFound;
 import model.Squadra;
 import model.Stagione;
 import service.ParserJson;
@@ -35,7 +36,7 @@ public class StatsCompetizione {
 
 
 
-	public int NumeroStagioneSalvate() throws MalformedURLException, JSONException, IOException, ParseException {
+	public int NumeroStagioneSalvate() throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		sta = parserjson.ParserStagioni(id);
 
 		int numerosta = sta.size();
@@ -70,7 +71,7 @@ public int  GetNumberTipo(String tipo) {
 	}
 	
 	
-	public ArrayList<String> SquadraMigliorAttacco () throws MalformedURLException, JSONException, IOException, ParseException {
+	public ArrayList<String> SquadraMigliorAttacco () throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 	ArrayList<String> attaco= new ArrayList<String>();
@@ -85,7 +86,7 @@ public int  GetNumberTipo(String tipo) {
 				}
 		return attaco;
 }
-	public ArrayList<String> SquadraMigliorDifesa () throws MalformedURLException, JSONException, IOException, ParseException {
+	public ArrayList<String> SquadraMigliorDifesa () throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 
@@ -102,7 +103,7 @@ public int  GetNumberTipo(String tipo) {
 			return difesa;
 	}
 	
-	public ArrayList<String> SquadraMigliorDifferenza () throws MalformedURLException, JSONException, IOException, ParseException {
+	public ArrayList<String> SquadraMigliorDifferenza () throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 
@@ -121,7 +122,7 @@ public int  GetNumberTipo(String tipo) {
 	}
 	
 	
-	public ArrayList<String> SquadraMaggiorVincite () throws MalformedURLException, JSONException, IOException, ParseException {
+	public ArrayList<String> SquadraMaggiorVincite () throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 
@@ -139,7 +140,7 @@ public int  GetNumberTipo(String tipo) {
 		
 	}
 	
-	public ArrayList<String> SquadraMaggiorPerdite () throws MalformedURLException, JSONException, IOException, ParseException {
+	public ArrayList<String> SquadraMaggiorPerdite () throws  MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 
