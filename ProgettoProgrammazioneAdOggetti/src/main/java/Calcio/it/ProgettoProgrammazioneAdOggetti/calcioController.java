@@ -97,14 +97,5 @@ public class calcioController {
 		return new ResponseEntity<>(servicecalcio.GetFiltriComp(filtercompetizioni),HttpStatus.OK);
 	}
 	
-<<<<<<< HEAD
-=======
-
-	
-	
-		
-		
-
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
 }
 	

@@ -26,17 +26,15 @@ public class StatsGenerali {
 	
 	StatsGeneraliModel statsgeneralimodel;
 	 double MediaGiorniStagione;
-<<<<<<< HEAD
 
+	/* Costruttore StatsGenerali che prende :
+	 * id1 , id2 e id3 per le tre competizioni e popula ArrayList per le squadre e stagioni
+	 *  
+	 */
+	 
 
 	public StatsGenerali(String id1,String id2,String id3) {
-=======
- 
-// Costruttore StatsGenerali
-	 
-	public StatsGenerali(String id1,String id2,String id3) throws MalformedURLException, JSONException, IOException, Exception{
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
-		S1=statistiche.ParserSquadre(id1,0);
+ 		S1=statistiche.ParserSquadre(id1,0);
 		S2=statistiche.ParserSquadre(id2,0);
 		Sta1=statistiche.ParserStagioni(id1);
 		Sta2=statistiche.ParserStagioni(id2);
@@ -46,23 +44,15 @@ public class StatsGenerali {
 		}
 
 		}
-	
-<<<<<<< HEAD
-	public int MassimoNumeroSquadre(boolean f)  {
-=======
 	// metodo che restituisce il numero massimo di squadre
-	
-	public int MassimoNumeroSquadre(boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
-		if(f) {
-			
+
+	public int MassimoNumeroSquadre(boolean f)  {
+			if(f) {
 			if(S1.size()>=S2.size())
 				return S1.size();
-			else return S2.size();
-			
+			else return S2.size();	
 		}
 		else { 
-		
 		if (S1.size()>=S2.size()) {
 			if(S1.size()>=S3.size()){
 				return S1.size();
@@ -161,26 +151,17 @@ public double  DurataGiorni(ArrayList<Stagione> Sg)   {
 			return MediaMesiStagione;
 		
 	}
-	
-<<<<<<< HEAD
-	public int MediaDurataSggiorni(boolean f) {
-=======
 	 //metodo che restituisce il resto di giorni da mesi della durata della stagione 
-	public int MediaDurataSggiorni(boolean f) throws MalformedURLException, JSONException, IOException, ParseException, java.text.ParseException {
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
+
+	public int MediaDurataSggiorni(boolean f) {
 		int prova =MediaDurataSgMesi(f);
 		int restogiorni = (int) (MediaGiorniStagione - (30*prova));
 		return restogiorni;
 	}
 	
-<<<<<<< HEAD
-	
-	public double MediaStagioniSalvate (boolean f)  {
-=======
 	 //metodo che restituisce la media delle stagione salvate della competizione 
-	public double MediaStagioniSalvate (boolean f) throws MalformedURLException, JSONException, IOException, ParseException {
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
-		
+
+	public double MediaStagioniSalvate (boolean f)  {		
 		if(f) {
 			int sommafilter=Sta1.size()+Sta2.size();
 			double mediafilter= (sommafilter/2);

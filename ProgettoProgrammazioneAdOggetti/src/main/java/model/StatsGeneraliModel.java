@@ -7,6 +7,15 @@ public class StatsGeneraliModel {
 	 int Media_durata_stagione_mesi;
 	 int Media_durata_stagione_giorni;
 	 double Media_stagioni_salvate;
+	 
+	 /* Costruttore StatsGeneraliModel che prende :
+	  * 1) il massimo numero di squadre 
+	  * 2) il minimo numero di squadre 
+	  * 3) il medio numero di squadre 
+	  * 4) la durata stagione in mesi 
+	  * 5) il resto durata stagione in giorni 
+	  * 6) il medio numero di stagioni salvate 
+	  */
 	public StatsGeneraliModel(int massimo_numero_squadre, int minimo_numero_squadre, double medio_numero_squadre,
 			int media_durata_stagione_mesi, int media_durata_stagione_giorni, double media_stagioni_salvate) {
 		super();
@@ -16,6 +25,8 @@ public class StatsGeneraliModel {
 		Media_durata_stagione_mesi = media_durata_stagione_mesi;
 		Media_durata_stagione_giorni = media_durata_stagione_giorni;
 		Media_stagioni_salvate = media_stagioni_salvate;
+		
+		// getters e setters per la classe StatsGeneraliModel
 	}
 	public int getMassimo_numero_squadre() {
 		return Massimo_numero_squadre;

@@ -13,10 +13,10 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 
-
+// classe risponsabile della chiamata API e il salvataggio su due file locali
 public class APICall {
 	
-	
+	// metodo che prende il "url" dell'API e restituisce una srtinga che sara salvata sul file 
 	
 	public String ChiamataAPI(String url) {
 		String input = null;

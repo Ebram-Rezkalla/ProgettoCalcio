@@ -12,7 +12,7 @@ public class ProgettoProgrammazioneAdOggettiApplication {
 	public static void main(String[] args)  {
 		SpringApplication.run(ProgettoProgrammazioneAdOggettiApplication.class, args);
 		
-		 // all'inizio dell'esocuzione del programma viene effetuata la chiamata all'API e viene scritto tutto su due file locali
+		 // All'inizio dell'esocuzione del programma viene effetuata la chiamata all'API e viene scritto tutto su due file locali
 		
 		APICall apicall = new APICall();
 		

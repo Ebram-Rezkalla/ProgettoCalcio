@@ -9,7 +9,15 @@ public class Squadra {
 	private int goalsAgainst;
 	private int goalDifferenza;
 	
-	// Costruttore Squadra
+	/* Costruttore Squadra che prende :
+	 * 1) la posizione della squadra 
+	 * 2) il nome della quadra 
+	 * 3) il numero di vincite 
+	 * 4) il numero di perdite
+	 * 5) il numero di goal segnati 
+	 * 6) il nemero di goal recivuti 
+	 * 7) il numero differenza goal
+	 */
 
 	public Squadra(int posizione,String nomesquadra, int vincite,int perdite,int goalsFor,int goalsAgainst,int goalDifferenza) {
 
@@ -21,7 +29,7 @@ public class Squadra {
 	this.goalsAgainst=goalsAgainst;
 	this.goalDifferenza=goalDifferenza;
 	
-	// getters e setters pel la classe Squadra
+	// getters e setters per la classe Squadra
 }
 
 	public int getPosizione() {

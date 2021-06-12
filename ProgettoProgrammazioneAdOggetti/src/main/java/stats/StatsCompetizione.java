@@ -1,12 +1,6 @@
 package stats;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
-
-import org.apache.tomcat.util.json.ParseException;
-import org.json.JSONException;
-
 import exception.BodyException;
 import exception.NotFound;
 import model.Squadra;
@@ -26,15 +20,15 @@ public class StatsCompetizione {
 	String tipo;
 	int n;
 	String pu;
-<<<<<<< HEAD
-	public StatsCompetizione(String id,String tipo,int n,String pu)  {
-=======
-	
-	// costruttore StatsCompetizione
-	
-	public StatsCompetizione(String id,String tipo,int n,String pu) throws MalformedURLException, JSONException, IOException, ParseException {
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
-		
+
+	/* Costruttore StatsCompetizione che prende:
+	 * 1) tipo della partita richiesto
+	 * 2) id della competizione disedirata
+	 * 3) il numero disedirato di squadre 
+	 * 4) "pu" prime o ultime squadre in base alla posizione 
+	 */
+
+	public StatsCompetizione(String id,String tipo,int n,String pu)  {		
 		this.id=id;
 		this.tipo=tipo;
 		this.n=n;
@@ -53,7 +47,10 @@ public class StatsCompetizione {
 		return numerosta;
 	}
 	
-//metodo che restituice il tipo delle partite  e verifica anche la correttezza della scrittura del tipo 
+/*metodo che restituice il tipo delle partite  e verifica anche la correttezza della scrittura del tipo 
+ * nel caso in cui l'utente sbaglia la  scrittura del key "tipo" manda l'eccezione di BodyException
+ * nel caso in cui l'utente sbaglia ad inserire il tipo della partita  manda l'eccezione di NotFound
+ */
 	
 public int  GetNumberTipo(String tipo) {
 		if(tipo==null)
@@ -66,7 +63,7 @@ public int  GetNumberTipo(String tipo) {
 		 
 		 if (tipo.equals("Away"))
 			 return 2;
-		 else throw new BodyException("Tipo Inserito Non Corretto,Si Prega di Usare Solamente(Total,Home,Away)");
+		 else throw new NotFound("Tipo Inserito Non Corretto,Si Prega di Usare Solamente(Total,Home,Away)");
 		}
  
 // metodo ausiliaro per la classe filter 
@@ -77,10 +74,7 @@ public int  GetNumberTipo(String tipo) {
 			if(pu.equals("p"))
 				ndato=n;
 			else m=(sq.size()-n);
-		}
-	
-		
-		
+		}	
 	}
 	
 	// metodo che restituisce le squadre che hanno il mioglior attacco 
@@ -101,14 +95,10 @@ public int  GetNumberTipo(String tipo) {
 				}
 		return attaco;
 }
-<<<<<<< HEAD
-	public ArrayList<String> SquadraMigliorDifesa () {
-=======
 	
 	// metodo che restituisce le squadre che hanno la  mioglior difesa
-	
-	public ArrayList<String> SquadraMigliorDifesa () throws MalformedURLException, JSONException, IOException, ParseException, IdNotFound {
->>>>>>> branch 'master' of https://github.com/Ebram-Rezkalla/ProgettoCalcio
+
+	public ArrayList<String> SquadraMigliorDifesa () {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
 

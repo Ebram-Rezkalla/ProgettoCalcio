@@ -2,7 +2,8 @@ package service;
 
 import java.util.ArrayList;
 
-
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import exception.NotFound;
 import filters.FilterCompetizione;
@@ -18,7 +19,6 @@ public class ServiceCalcio {
 	
 	ParserJson servicecomp=new ParserJson();
 	ArrayList<String> out=new ArrayList<String>();
-	ArrayList<String> outone=new ArrayList<String>();
 	StatsGenerali statsgenerali;
 
 
@@ -42,7 +42,7 @@ public class ServiceCalcio {
 		
 		return out;
 		}
-		
+
 		
 	public void getcompetizione(String code)  {
 		

@@ -10,7 +10,13 @@ public class Competizione {
 	private ArrayList<Squadra> squadraList= new ArrayList<>();
 	private ArrayList<Stagione> stagioneList= new ArrayList<>();
 	
-	// Costruttore Competizione
+	/*Costruttore Competizione che prende :
+	 * 1) il nome del paese 
+	 * 2) il nome della competizione 
+	 * 3) le stagioni salvate della competizione 
+	 * 4) le squadre partecipanti 
+	 * 5) id della competizione 
+	 */
 	
 	public Competizione (String nomePaese , String nome,int id,ArrayList<Stagione> stagioneList,ArrayList<Squadra> squadraList) {
 		this.nomePaese = nomePaese ;
@@ -19,7 +25,7 @@ public class Competizione {
 		this.squadraList=squadraList;
 		this.stagioneList=stagioneList;
 		
-	// getters e setters pel la classe Competizione	
+	// getters e setters per la classe Competizione	
 	}
 
 	public int getId() {

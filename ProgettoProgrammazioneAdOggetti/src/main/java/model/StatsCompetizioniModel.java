@@ -10,6 +10,16 @@ public class StatsCompetizioniModel {
 	ArrayList<String> Squadra_Miglior_Differenza;
 	ArrayList<String> Squadra_Maggior_Vincite ;
 	ArrayList<String> Squadra_Maggior_Perdite;
+	
+	
+	/* Costruttore StatsCompetizioniModel che prende :
+	 * 1) il numero delle stagagione salvate 
+	 * 2) nome delle squadre con il miglior attacco 
+	 * 3) nome delle squadre con la miglior difesa  
+	 * 4) nome delle squadre con la miglior differenza goal 
+	 * 5) nome delle squadre con le maggior vincite 
+	 * 6)  nome delle squadre con le maggior perdite
+	 */
 	public StatsCompetizioniModel(int numero_Stagione_Salvate, ArrayList<String> squadra_Miglior_Attacco,
 			ArrayList<String> squadra_Miglior_Difesa, ArrayList<String> squadra_Miglior_Differenza,
 			ArrayList<String> squadra_Maggior_Vincite, ArrayList<String> squadra_Maggior_Perdite) {
@@ -21,6 +31,8 @@ public class StatsCompetizioniModel {
 		Squadra_Maggior_Vincite = squadra_Maggior_Vincite;
 		Squadra_Maggior_Perdite = squadra_Maggior_Perdite;
 	}
+	
+	// getters e setters per la classe StatsCompetizioniModel
 	public int getNumero_Stagione_Salvate() {
 		return Numero_Stagione_Salvate;
 	}
