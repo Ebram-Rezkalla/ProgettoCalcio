@@ -6,9 +6,9 @@ package filters;
 import stats.StatsGenerali;
 
 public class FilterGenerali {
-	String id1;
-	String id2;
-	StatsGenerali statsgenerali;
+	private String id1;
+	private String id2;
+	 StatsGenerali statsgenerali;
 	/* Costruttore FilterGenerali che prende :
 	 * id1 per la prima competizione 
 	 * id2 per la seconda competizione

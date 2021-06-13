@@ -64,16 +64,11 @@ public class APICall {
 	
 	@SuppressWarnings("resource")
 	public String readfile(String nomefile)   {
-		BufferedReader read = null;
+		String output = "";
+
 		try {
+			BufferedReader read;
 				read = new BufferedReader(new FileReader(nomefile));
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
-			
-		String output = null;
-		
-			try {
 				output = read.readLine();
 			} catch (IOException e) {
 				e.printStackTrace();

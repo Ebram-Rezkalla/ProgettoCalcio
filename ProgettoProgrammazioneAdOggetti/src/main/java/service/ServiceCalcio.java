@@ -9,6 +9,7 @@ import exception.NotFound;
 import filters.FilterCompetizione;
 import filters.FilterGenerali;
 import model.Competizione;
+import model.Competizioni;
 import model.Stagione;
 import model.StatsCompetizioniModel;
 import model.StatsGeneraliModel;
@@ -18,7 +19,7 @@ import stats.StatsGenerali;
 public class ServiceCalcio {
 	
 	ParserJson servicecomp=new ParserJson();
-	ArrayList<String> out=new ArrayList<String>();
+	ArrayList<Competizioni> out=new ArrayList<Competizioni>();
 	StatsGenerali statsgenerali;
 
 
@@ -32,7 +33,7 @@ public class ServiceCalcio {
 	}
 	
 	
-	public ArrayList<String>getall() {
+	public ArrayList<Competizioni>getall() {
 		
 		
 		getcompetizione("2019");
@@ -48,15 +49,18 @@ public class ServiceCalcio {
 		
 		
 		Competizione compi=servicecomp.ParserCompetizioni(code);
-		String id="id:"+compi.getId();
-		String nomepaese="nome paese:"+compi.getNomepaese();
-		String nome="nome:"+compi.getNome();
+		int id=compi.getId();
+		String nomepaese=compi.getNomepaese();
+		String nome=compi.getNome();
 	staglist=compi.getStagionelist();
 	Stagione stag=staglist.get(0);
-	String datainizio="Data inizio:"+stag.getDataInizio();
-	String datafine="Data fine:"+stag.getDataFine();
-	String vincitore="Vincitore:"+stag.getVincitore();
-	out.add(id);out.add(nome);out.add(nomepaese);out.add(datainizio);out.add(datafine);out.add(vincitore);
+	String datainizio=stag.getDataInizio();
+	String datafine=stag.getDataFine();
+	String vincitore=stag.getVincitore();
+	Competizioni competizioni= new Competizioni(id,nomepaese,nome,datainizio,datafine,vincitore);
+	
+	
+	out.add(competizioni);
 
 		
 		
