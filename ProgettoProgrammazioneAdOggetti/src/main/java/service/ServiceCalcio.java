@@ -2,8 +2,6 @@ package service;
 
 import java.util.ArrayList;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import exception.NotFound;
 import filters.FilterCompetizione;

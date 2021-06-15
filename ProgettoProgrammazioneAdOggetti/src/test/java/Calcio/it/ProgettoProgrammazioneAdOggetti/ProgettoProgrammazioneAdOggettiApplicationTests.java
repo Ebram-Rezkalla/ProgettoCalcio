@@ -43,12 +43,12 @@ class ProgettoProgrammazioneAdOggettiApplicationTests {
 		
 	}
 
-	@Test
+	/*@Test
 	@DisplayName("Test3, Verifica la lettura da un file locale ")
 	void readFiletest() {
 		String test= apicalltest.readfile("datisquadre");
 		assertNotNull(test);
-	}
+	}*/
 	
 
 }
