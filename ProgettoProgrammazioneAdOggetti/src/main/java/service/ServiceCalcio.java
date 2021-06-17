@@ -16,15 +16,13 @@ import stats.StatsGenerali;
 
 public class ServiceCalcio {
 	
-	ParserJson servicecomp=new ParserJson();
-	ArrayList<Competizioni> out=new ArrayList<Competizioni>();
-	StatsGenerali statsgenerali;
-
-
-	ArrayList<Stagione> staglist=new ArrayList<Stagione>();
-	
-	 StatsGeneraliModel statsgeneralimodel;
-	 StatsGeneraliModel filtergeneralimodel;
+	private ParserJson servicecomp=new ParserJson();
+	private StatsGenerali statsgenerali;
+	private StatsGeneraliModel statsgeneralimodel;
+	private StatsGeneraliModel filtergeneralimodel;
+	//private ArrayList<Competizioni> out=new ArrayList<Competizioni>();
+	private ArrayList<Stagione> staglist=new ArrayList<Stagione>();
+	 
 	public ServiceCalcio () {
 			
 		
@@ -33,19 +31,18 @@ public class ServiceCalcio {
 	
 	public ArrayList<Competizioni>getall() {
 		
-		
-		getcompetizione("2019");
-		getcompetizione("2015");
-		getcompetizione("2002");
+		ArrayList<Competizioni> out=new ArrayList<Competizioni>();
+
+		out.add(getcompetizione("2019"));
+		out.add(getcompetizione("2015"));
+		out.add(getcompetizione("2002"));
 		
 		
 		return out;
 		}
 
 		
-	public void getcompetizione(String code)  {
-		
-		
+	public Competizioni getcompetizione(String code)  {
 		Competizione compi=servicecomp.ParserCompetizioni(code);
 		int id=compi.getId();
 		String nomepaese=compi.getNomepaese();
@@ -58,7 +55,7 @@ public class ServiceCalcio {
 	Competizioni competizioni= new Competizioni(id,nomepaese,nome,datainizio,datafine,vincitore);
 	
 	
-	out.add(competizioni);
+	return competizioni;
 
 		
 		
