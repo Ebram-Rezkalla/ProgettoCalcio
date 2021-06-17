@@ -2,7 +2,6 @@ package service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,8 +12,8 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 
-// classe risponsabile della chiamata API e il salvataggio su due file locali
-public class APICall {
+    // classe risponsabile della chiamata API e il salvataggio su due file locali
+    public class APICall {
 	
 	// metodo che prende il "url" dell'API e restituisce una srtinga che sara salvata sul file 
 	
@@ -33,6 +32,8 @@ public class APICall {
 		
 		
 		}
+	
+	// metodo per scrivere tutte le informazioni per le 3 competizioni su un file "datisatgioni"
 
 	public void writefileStagioni()  {
 		String write1=ChiamataAPI("https://api.football-data.org/v2/competitions/2019");
@@ -47,6 +48,8 @@ public class APICall {
 		printwriter.close();
 		}
 	
+	// metodo per scrivere tutte le informazioni di squader di 3 competizioni su un file "datisquadre"
+	
 	public void writefileSquadre()  {
 		String write1=ChiamataAPI("https://api.football-data.org/v2/competitions/2019/standings");
 		String write2=ChiamataAPI("https://api.football-data.org/v2/competitions/2015/standings");
@@ -60,8 +63,7 @@ public class APICall {
 		printwriter.close();
 		}
 	
-	
-	
+	// metodo che prende il nome del file e va a leggere quello che c'e' scritto nel file e restituisce una stringa 
 	@SuppressWarnings("resource")
 	public String readfile(String nomefile)   {
 		String output = "";

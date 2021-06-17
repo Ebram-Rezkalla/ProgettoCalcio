@@ -17,6 +17,8 @@ public class ParserJson extends APICall  {
 	Squadra s;
 	Stagione sg;
 	Competizione comp;
+	
+	// questa classe ha il compito di effetuare il parsing dal file json e trasformali in java object con l'aiuto delle classi model
 
 public ParserJson() {
 	

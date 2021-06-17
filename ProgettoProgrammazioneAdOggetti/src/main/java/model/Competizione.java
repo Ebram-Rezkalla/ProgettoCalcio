@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class Competizione {
 	private int id;
@@ -17,7 +16,6 @@ public class Competizione {
 	 * 4) le squadre partecipanti 
 	 * 5) id della competizione 
 	 */
-	
 	public Competizione (String nomePaese , String nome,int id,ArrayList<Stagione> stagioneList,ArrayList<Squadra> squadraList) {
 		this.nomePaese = nomePaese ;
 		this.nome = nome;
@@ -67,9 +65,4 @@ public class Competizione {
 	public void setStagionelist(ArrayList<Stagione> stagioneList) {
 		this.stagioneList = stagioneList;
 	}
-	
-	
-	
-	
-	
 }

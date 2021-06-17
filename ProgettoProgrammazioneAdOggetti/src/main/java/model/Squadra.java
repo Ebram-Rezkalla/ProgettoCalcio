@@ -18,7 +18,6 @@ public class Squadra {
 	 * 6) il nemero di goal recivuti 
 	 * 7) il numero differenza goal
 	 */
-
 	public Squadra(int posizione,String nomesquadra, int vincite,int perdite,int goalsFor,int goalsAgainst,int goalDifferenza) {
 
 	this.posizione=posizione;

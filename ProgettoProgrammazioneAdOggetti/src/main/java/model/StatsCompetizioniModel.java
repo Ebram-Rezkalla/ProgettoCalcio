@@ -11,7 +11,6 @@ public class StatsCompetizioniModel {
 	ArrayList<String> Squadra_Maggior_Vincite ;
 	ArrayList<String> Squadra_Maggior_Perdite;
 	
-	
 	/* Costruttore StatsCompetizioniModel che prende :
 	 * 1) il numero delle stagagione salvate 
 	 * 2) nome delle squadre con il miglior attacco 

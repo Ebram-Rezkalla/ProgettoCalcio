@@ -10,8 +10,6 @@ public class Stagione {
 	 * 2) data fine stagione 
 	 * 3) il vincitore della stagione 
 	 */
-	
-	
 	public Stagione (String dataInizio, String dataFine, String vincitore) {
 		this.dataInizio=dataInizio;
 		this.dataFine=dataFine;

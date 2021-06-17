@@ -12,16 +12,14 @@ public class ExceptionModel {
 	
 	private final ZonedDateTime timestamp;
 
+	// classe che cida il modello dell'eccezione 
 	
-
-
 	public ExceptionModel(String message, HttpStatus httpstatus, ZonedDateTime timestamp) {
 		super();
 		this.message = message;
 		this.httpstatus = httpstatus;
 		this.timestamp = timestamp;
 	}
-
 
 	public String getMessage() {
 		return message;

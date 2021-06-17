@@ -8,6 +8,14 @@ private String Data_Inizio;
 private String Data_Fine;
 private String Vincitore;
 
+ /*Costruttore Competizioni che prende :
+ * 1) id della competizione 
+ * 2) il nome del paese 
+ * 3) il nome della competizione 
+ * 4) data inizio della stagione
+ * 5) data fine della stagione
+ * 6) il vencitore della stagione 
+ */
 public Competizioni(int id, String nome_Paese, String nome_Competizione, String data_Inizio, String data_Fine,
 		String vincitore) {
 	this.id = id;
@@ -17,6 +25,8 @@ public Competizioni(int id, String nome_Paese, String nome_Competizione, String 
 	this.Data_Fine = data_Fine;
 	this.Vincitore = vincitore;
 }
+
+//getters e setters per la classe Competizioni	
 
 public int getId() {
 	return id;
