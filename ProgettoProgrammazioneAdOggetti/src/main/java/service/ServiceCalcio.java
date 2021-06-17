@@ -1,8 +1,6 @@
 package service;
 
 import java.util.ArrayList;
-
-
 import exception.NotFound;
 import filters.FilterCompetizione;
 import filters.FilterGenerali;
@@ -14,38 +12,37 @@ import model.StatsGeneraliModel;
 import stats.StatsCompetizione;
 import stats.StatsGenerali;
 
+// Questa classe ha il compito di collegare tutte le classi con la classe CalcioController restituendo i vari metodi 
 public class ServiceCalcio {
 	
-	ParserJson servicecomp=new ParserJson();
-	ArrayList<Competizioni> out=new ArrayList<Competizioni>();
-	StatsGenerali statsgenerali;
-
-
-	ArrayList<Stagione> staglist=new ArrayList<Stagione>();
+	private ParserJson servicecomp=new ParserJson();
+	private StatsGenerali statsgenerali;
+	private StatsGeneraliModel statsgeneralimodel;
+	private StatsGeneraliModel filtergeneralimodel;
+	private ArrayList<Stagione> staglist=new ArrayList<Stagione>();
+	  
+	// Costruttore ServiceCalcio 
 	
-	 StatsGeneraliModel statsgeneralimodel;
-	 StatsGeneraliModel filtergeneralimodel;
 	public ServiceCalcio () {
 			
-		
 	}
 	
-	
+	// metodo che chiama getcompetizione e restitisce un ArrayList del modello competizioni
+	// contiene le informazioni generali di tutte le competizioni
 	public ArrayList<Competizioni>getall() {
 		
-		
-		getcompetizione("2019");
-		getcompetizione("2015");
-		getcompetizione("2002");
-		
+		ArrayList<Competizioni> out=new ArrayList<Competizioni>();
+		out.add(getcompetizione("2019"));
+		out.add(getcompetizione("2015"));
+		out.add(getcompetizione("2002"));
 		
 		return out;
 		}
-
-		
-	public void getcompetizione(String code)  {
-		
-		
+	
+	
+    // um metodo che prende il codice della competizione e restitusce il modello competizioni 
+	// contiene le informazioni generali di tutte le competizioni
+	public Competizioni getcompetizione(String code)  {
 		Competizione compi=servicecomp.ParserCompetizioni(code);
 		int id=compi.getId();
 		String nomepaese=compi.getNomepaese();
@@ -57,31 +54,24 @@ public class ServiceCalcio {
 	String vincitore=stag.getVincitore();
 	Competizioni competizioni= new Competizioni(id,nomepaese,nome,datainizio,datafine,vincitore);
 	
+	return competizioni;
 	
-	out.add(competizioni);
-
-		
-		
 	}
-		
+	
+	// um metodo che prende il codice della competizione e restitusce il modello di una specifica competizione
+	// contiene le informazioni della competizione in modo specifico
 		public Competizione getSpecificComp (String code)    {
 			
 			Competizione compi=servicecomp.ParserCompetizioni(code);
 			
-		
 			return compi;
-			
-			
-			
+				
 		}
 		
-		
-		
-		
+		// metodo che chiama i metodi della classe StatsGenerali e restituisce il modello StatsGeneraliModel che contiene le statistiche in base alle competizioni 
 		public  StatsGeneraliModel GetStats(){
 			
-			
-				 statsgenerali=new StatsGenerali("2019", "2015", "2002");
+			statsgenerali=new StatsGenerali("2019", "2015", "2002");
 		
 			int massimo=statsgenerali.MassimoNumeroSquadre(false);
 			int minimo=statsgenerali.MinimoNumeroSquadre(false);
@@ -91,10 +81,10 @@ public class ServiceCalcio {
 			double mediasg=statsgenerali.MediaStagioniSalvate(false);
 			statsgeneralimodel= new StatsGeneraliModel(massimo,minimo,media,mediamesi,mediagiorni,mediasg);
 			
-
 				return statsgeneralimodel;	
 		}
 		
+		// metodo che chiama i metodi della classe Filter e restituisce il modello StatsGeneraliModel che contiene le statistiche filtrate in base alle competizioni richieste dall'utente
 		public StatsGeneraliModel GetFiltri(FilterGenerali filter)  {
 			
 			int massimo=filter.MassimoSquadreFilter();
@@ -105,11 +95,11 @@ public class ServiceCalcio {
 			double mediasg=filter.MediaStagioniFilter();
 			filtergeneralimodel= new StatsGeneraliModel(massimo,minimo,media,mediamesi,mediagiorni,mediasg);
 			
-					
 			return  filtergeneralimodel;
 			
 		}
 		
+		// metodo che chiama i metodi della classe StatsCompetizione e restituisce il modello StatsCompetizioniModel che contiene le statistiche  in base alla competizione		
 		public StatsCompetizioniModel  GetStatsComp(String id)  {
 			
 			StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
@@ -124,10 +114,11 @@ public class ServiceCalcio {
 			
 			return statscompetizionimodel;	
 		}
-
+		
+		// metodo che chiama i metodi della classe FilterCompetizione e restituisce il modello StatsCompetizioniModel che contiene le statistiche filtrate in base alla competizione
+		//prende come argomento un oggetto della classe FilterCompetizioni
 		public StatsCompetizioniModel  GetFiltriComp(FilterCompetizione filtercompetizioni) throws NotFound {
 			
-			//StatsCompetizione statscompetizione=new StatsCompetizione(id,"Total",0,"p");
 			ArrayList<String> migliorattaco= filtercompetizioni.SquadraMigliorAttacoFilter();
 			ArrayList<String> migliordifesa= filtercompetizioni.SquadraMigliorDifesaFilter();
 			ArrayList<String> migliordifferenza =filtercompetizioni.SquadraMigliorDifferenzaFilter();

@@ -5,8 +5,9 @@ import stats.StatsGenerali;
 public class FilterGenerali {
 	private String id1;
 	private String id2;
-	 StatsGenerali statsgenerali;
 	 
+	private StatsGenerali statsgenerali;
+
 	/* Costruttore FilterGenerali che prende :
 	 * id1 per la prima competizione 
 	 * id2 per la seconda competizione
@@ -21,16 +22,16 @@ public class FilterGenerali {
 	
 	 // metodo che restitusce il massimo numero di squadre filtrate chiamando il metodo MassimoNumeroSquadre
 
-public int MassimoSquadreFilter()   {
+     public int MassimoSquadreFilter()   {
 			
 			int massimo=statsgenerali.MassimoNumeroSquadre(true);
 			return  massimo;
 		}
 
-// metodo che restitusce il minimo numero di squadre filtrate chiamando il metodo MinimoNumeroSquadre
+    // metodo che restitusce il minimo numero di squadre filtrate chiamando il metodo MinimoNumeroSquadre
 
 
-public int MinimoSquadreFilter()  {
+    public int MinimoSquadreFilter()  {
 	
 	int minimo=statsgenerali.MinimoNumeroSquadre(true);
 	return  minimo;

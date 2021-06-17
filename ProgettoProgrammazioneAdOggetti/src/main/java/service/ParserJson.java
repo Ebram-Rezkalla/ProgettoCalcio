@@ -22,9 +22,9 @@ public class ParserJson extends APICall  {
 
 public ParserJson() {
 	
-	
 }
 
+// chiama il metodo readfile ed effetua il parsing restituendo un ArrayList di tipo squadre
 
 public ArrayList<Squadra> ParserSquadre (String codice,int tipo)   {
 	
@@ -51,7 +51,7 @@ public ArrayList<Squadra> ParserSquadre (String codice,int tipo)   {
 			return squadraList;
 			}
 
-
+//chiama il metodo readfile ed effetua il parsing restituendo un ArrayList di tipo stagione
 public ArrayList<Stagione> ParserStagioni (String codice)   {
 	
 	ArrayList<Stagione> StagioneList=new ArrayList<>();
@@ -78,9 +78,7 @@ public ArrayList<Stagione> ParserStagioni (String codice)   {
 			return StagioneList;
 		}
 			
-
-
-
+//chiama i metodi readfile,ParserSquadre,ParserStagioni ed effetua il parsing restituendo oggetto competizione in cui sono present le squadre e le stagioni
 public Competizione ParserCompetizioni (String codice)   {
 	int n= GetNumber (codice);
 		JSONArray stagionitot;
@@ -100,6 +98,9 @@ public Competizione ParserCompetizioni (String codice)   {
 			return comp;
 			}
 
+ // Questo metodo prende una stringa che e' il codice e ristitusce un numero che verra dopo utilizzato in altri metodi 
+ // verra' lanciata l'eccezione BodyException quando l'utente scrive il body in modo errato
+ //verra' lanciata l'eccezione NotFound quando l'utente non inserisce l'id oppure id nullo
 
  public int GetNumber (String codice){
 	 if(codice==null)
@@ -117,7 +118,5 @@ public Competizione ParserCompetizioni (String codice)   {
 	 else throw new NotFound("ID Non Corretto, Si Prega di Usare le ID Disponibili(2002,2015,2019).");
 
  }
-
-
 
 }

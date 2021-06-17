@@ -9,17 +9,16 @@ import service.ParserJson;
 
 public class StatsCompetizione {
 	protected ParserJson parserjson = new ParserJson();
-	
-   ArrayList<Stagione> sta=new ArrayList<Stagione>();
+	protected ArrayList<Squadra> sq=new ArrayList<Squadra>();
+	 ArrayList<Stagione> sta=new ArrayList<Stagione>();
 
-   protected ArrayList<Squadra> sq=new ArrayList<Squadra>();
 
-   int ndato;
-	int m=0;
-	String id;
-	String tipo;
-	int n;
-	String pu;
+	 int ndato;
+	 int m=0;
+	 String id;
+	 String tipo;
+	 int n;
+	 String pu;
 
 	/* Costruttore StatsCompetizione che prende:
 	 * 1) tipo della partita richiesto
@@ -149,7 +148,6 @@ public class StatsCompetizione {
 	public ArrayList<String> SquadraMaggiorPerdite ()  {
 		sq = parserjson.ParserSquadre(id,GetNumberTipo(tipo));
 		StatsFilter();
-
 		ArrayList<String> perdite= new ArrayList<String>();
 		int big=sq.get(m).getPerdite();
 			for(int i=m+1;i<ndato;i++) {

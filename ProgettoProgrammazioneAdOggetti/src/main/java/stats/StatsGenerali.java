@@ -14,10 +14,12 @@ public class StatsGenerali {
 	ArrayList<Squadra> S2 = new ArrayList<Squadra>();
 	ArrayList<Squadra> S3 = new ArrayList<Squadra>();
 	ArrayList<Stagione> Sg = new ArrayList<Stagione>();
-	
+
 	ArrayList<Stagione> Sta1 = new ArrayList<Stagione>();
 	ArrayList<Stagione> Sta2 = new ArrayList<Stagione>();
 	ArrayList<Stagione> Sta3 = new ArrayList<Stagione>();
+
+
 	boolean f;
 	double MediaGiorniStagione;
 
